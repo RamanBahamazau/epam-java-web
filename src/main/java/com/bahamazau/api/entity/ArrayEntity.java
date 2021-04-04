@@ -20,7 +20,7 @@ public class ArrayEntity {
         return Optional.ofNullable(data);
     }
 
-    public void setData(int[] data) {
+    public void setData(int... data) {
         this.data = data;
     }
 
