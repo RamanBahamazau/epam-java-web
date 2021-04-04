@@ -11,9 +11,11 @@ public class ArrayEntity {
         this.data = data;
     }
 
-    public Optional<int[]> selectData() {
+    public Optional<int[]> copyData() {
         int[] data = new int[this.data.length];
-        System.arraycopy(this.data, 0, data, 0, this.data.length);
+        for (int index = 0; index < this.data.length; index++) {
+            data[index] = this.data[index];
+        }
 
         return Optional.ofNullable(data);
     }
