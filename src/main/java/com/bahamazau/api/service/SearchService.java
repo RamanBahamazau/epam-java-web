@@ -9,7 +9,7 @@ public interface SearchService {
     public Optional<Integer> findMax(ArrayEntity arrayEntity);
     public Optional<Integer> findMin(ArrayEntity arrayEntity);
 
-    public Optional<Integer> findAvg(ArrayEntity arrayEntity);
+    public Optional<Double> findAvg(ArrayEntity arrayEntity);
     public Optional<Integer> findSum(ArrayEntity arrayEntity);
 
     public Optional<Integer> findCountPositiveElements(ArrayEntity arrayEntity);
