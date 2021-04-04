@@ -39,7 +39,7 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public Optional<Integer> findAvg(ArrayEntity arrayEntity) {
-        int avgValue = 0;
+        Integer avgValue = null;
         if (arrayEntity.copyData().isPresent()) {
             final int[] array = arrayEntity.copyData().get();
             avgValue = sum(arrayEntity) / array.length;
@@ -50,25 +50,13 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public Optional<Integer> findSum(ArrayEntity arrayEntity) {
-        return Optional.ofNullable(sum(arrayEntity));
-    }
-
-    private int sum(ArrayEntity arrayEntity) {
-        int sum = 0;
-        if (arrayEntity.copyData().isPresent()) {
-            final int[] array = arrayEntity.copyData().get();
-
-            for (int element: array) {
-                sum += element;
-            }
-        }
-
-        return sum;
+        int sum = sum(arrayEntity);
+        return Optional.ofNullable(sum);
     }
 
     @Override
     public Optional<Integer> findCountPositiveElements(ArrayEntity arrayEntity) {
-        int count = 0;
+        Integer count = 0;
         if (arrayEntity.copyData().isPresent()) {
             final int[] array = arrayEntity.copyData().get();
 
@@ -84,7 +72,7 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public Optional<Integer> findCountNegativeElements(ArrayEntity arrayEntity) {
-        int count = 0;
+        Integer count = 0;
         if (arrayEntity.copyData().isPresent()) {
             final int[] array = arrayEntity.copyData().get();
 
@@ -96,6 +84,19 @@ public class SearchServiceImpl implements SearchService {
         }
 
         return Optional.ofNullable(count);
+    }
+
+    private int sum(ArrayEntity arrayEntity) {
+        Integer sum = null;
+        if (arrayEntity.copyData().isPresent()) {
+            final int[] array = arrayEntity.copyData().get();
+
+            for (int element: array) {
+                sum += element;
+            }
+        }
+
+        return sum;
     }
 
 }

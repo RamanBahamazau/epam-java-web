@@ -7,11 +7,15 @@ public class ArrayEntity {
 
     private int[] data;
 
-    public ArrayEntity(int... data) {
+    public ArrayEntity(int[] data) {
         this.data = data;
     }
 
     public Optional<int[]> copyData() {
+        if (this.data.length == 0) {
+            return Optional.empty();
+        }
+
         int[] data = new int[this.data.length];
         for (int index = 0; index < this.data.length; index++) {
             data[index] = this.data[index];
@@ -20,7 +24,7 @@ public class ArrayEntity {
         return Optional.ofNullable(data);
     }
 
-    public void setData(int... data) {
+    public void setData(int[] data) {
         this.data = data;
     }
 
