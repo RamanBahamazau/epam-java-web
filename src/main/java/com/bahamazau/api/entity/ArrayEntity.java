@@ -1,4 +1,4 @@
-package com.bahamazau.entity;
+package com.bahamazau.api.entity;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -18,6 +18,10 @@ public class ArrayEntity {
         }
 
         return Optional.ofNullable(data);
+    }
+
+    public void setData(int[] data) {
+        this.data = data;
     }
 
     @Override

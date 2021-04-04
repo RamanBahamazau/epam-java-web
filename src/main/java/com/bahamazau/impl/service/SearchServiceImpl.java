@@ -1,7 +1,7 @@
 package com.bahamazau.impl.service;
 
+import com.bahamazau.api.entity.ArrayEntity;
 import com.bahamazau.api.service.SearchService;
-import com.bahamazau.entity.ArrayEntity;
 
 import java.util.Optional;
 
@@ -35,6 +35,67 @@ public class SearchServiceImpl implements SearchService {
         }
 
         return Optional.ofNullable(minValue);
+    }
+
+    @Override
+    public Optional<Integer> findAvg(ArrayEntity arrayEntity) {
+        int avgValue = 0;
+        if (arrayEntity.copyData().isPresent()) {
+            final int[] array = arrayEntity.copyData().get();
+            avgValue = sum(arrayEntity) / array.length;
+        }
+
+        return Optional.ofNullable(avgValue);
+    }
+
+    @Override
+    public Optional<Integer> findSum(ArrayEntity arrayEntity) {
+        return Optional.ofNullable(sum(arrayEntity));
+    }
+
+    private int sum(ArrayEntity arrayEntity) {
+        int sum = 0;
+        if (arrayEntity.copyData().isPresent()) {
+            final int[] array = arrayEntity.copyData().get();
+
+            for (int element: array) {
+                sum += element;
+            }
+        }
+
+        return sum;
+    }
+
+    @Override
+    public Optional<Integer> findCountPositiveElements(ArrayEntity arrayEntity) {
+        int count = 0;
+        if (arrayEntity.copyData().isPresent()) {
+            final int[] array = arrayEntity.copyData().get();
+
+            for (int element: array) {
+                if (element > 0) {
+                    count ++;
+                }
+            }
+        }
+
+        return Optional.ofNullable(count);
+    }
+
+    @Override
+    public Optional<Integer> findCountNegativeElements(ArrayEntity arrayEntity) {
+        int count = 0;
+        if (arrayEntity.copyData().isPresent()) {
+            final int[] array = arrayEntity.copyData().get();
+
+            for (int element: array) {
+                if (element < 0) {
+                    count ++;
+                }
+            }
+        }
+
+        return Optional.ofNullable(count);
     }
 
 }
