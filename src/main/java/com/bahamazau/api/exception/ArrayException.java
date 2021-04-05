@@ -6,7 +6,4 @@ public class ArrayException extends Exception {
         super(message);
     }
 
-    public ArrayException(Throwable cause) {
-        super(cause);
-    }
 }
