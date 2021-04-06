@@ -2,8 +2,6 @@ package com.bahamazau.impl.service.custom;
 
 import com.bahamazau.api.exception.ArrayException;
 import com.bahamazau.api.service.FileReaderService;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,14 +9,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static org.apache.log4j.Level.ERROR;
-
 public class FileReaderServiceImpl implements FileReaderService {
 
     private static final String NOT_EXISTS_MSG = "File doesn't exist!";
     private static final String NOT_ONLY_DIGITS_MSG = "File is not containing only digits strings!";
-
-    private static final Logger LOGGER = LogManager.getLogger(FileReaderServiceImpl.class);
+    private static final String NOT_CLOSING_FILE_MSG = "File is not containing only digits strings!";
 
     private final ValidationService validationService = new ValidationService();
 
@@ -51,12 +46,11 @@ public class FileReaderServiceImpl implements FileReaderService {
                 try {
                     fileReader.close();
                 } catch (IOException e) {
-                    LOGGER.log(ERROR, e.getMessage());
+                    new ArrayException(NOT_CLOSING_FILE_MSG);
                 }
             }
         }
 
-        LOGGER.log(ERROR, NOT_ONLY_DIGITS_MSG);
         throw new ArrayException(NOT_ONLY_DIGITS_MSG);
     }
 }

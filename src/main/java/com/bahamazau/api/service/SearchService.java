@@ -2,7 +2,6 @@ package com.bahamazau.api.service;
 
 import com.bahamazau.api.entity.ArrayEntity;
 
-import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.OptionalLong;

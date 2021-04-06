@@ -2,8 +2,6 @@ package com.bahamazau.impl.service.stream;
 
 import com.bahamazau.api.exception.ArrayException;
 import com.bahamazau.api.service.FileReaderService;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,8 +12,6 @@ public class FileReaderServiceImpl implements FileReaderService {
 
     private static final String NOT_EXISTS_MSG = "File doesn't exist!";
     private static final String NOT_ONLY_DIGITS_MSG = "File is not containing only digits strings!";
-
-    private static final Logger LOGGER = LogManager.getLogger(FileReaderServiceImpl.class);
 
     private final ValidationService validationService = new ValidationService();
 
