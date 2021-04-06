@@ -1,13 +1,13 @@
-package com.bahamazau.impl.service.file;
+package com.bahamazau.impl.service.custom;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FileValidationServiceImplUnitTest {
+public class ValidationServiceImplUnitTest {
 
-    private final FileValidationService service = new FileValidationService();
+    private final ValidationService service = new ValidationService();
 
     @ParameterizedTest
     @MethodSource("containOnlyDigitsData")

@@ -1,14 +1,16 @@
-package com.bahamazau.impl.service;
+package com.bahamazau.impl.service.stream;
 
 import com.bahamazau.api.entity.ArrayEntity;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.OptionalLong;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SearchServiceImplImplUnitTest {
+public class SearchServiceImplUnitTest {
 
     private static final Integer MAX_VALUE = 3;
     private static final Integer MIN_VALUE = 1;
@@ -20,9 +22,9 @@ public class SearchServiceImplImplUnitTest {
     public void whenFindMax_givenFindMaxData(int[] array, Integer expectedValue) {
         // given
         ArrayEntity arrayEntity = new ArrayEntity(array);
-        Optional<Integer> expected = Optional.ofNullable(expectedValue);
+        OptionalInt expected = expectedValue == null ? OptionalInt.empty() : OptionalInt.of(expectedValue);
         // when
-        Optional<Integer> actual = service.findMax(arrayEntity);
+        OptionalInt actual = service.findMax(arrayEntity);
         // then
         assertEquals(actual, expected);
     }
@@ -41,9 +43,9 @@ public class SearchServiceImplImplUnitTest {
     public void whenFindMin_givenFindMinData(int[] array, Integer expectedValue) {
         // given
         ArrayEntity arrayEntity = new ArrayEntity(array);
-        Optional<Integer> expected = Optional.ofNullable(expectedValue);
+        OptionalInt expected = expectedValue == null ? OptionalInt.empty() : OptionalInt.of(expectedValue);
         // when
-        Optional<Integer> actual = service.findMin(arrayEntity);
+        OptionalInt actual = service.findMin(arrayEntity);
         // then
         assertEquals(actual, expected);
     }
@@ -62,9 +64,9 @@ public class SearchServiceImplImplUnitTest {
     public void whenFindAvg_givenFindAvgData(int[] array, Double expectedValue) {
         // given
         ArrayEntity arrayEntity = new ArrayEntity(array);
-        Optional<Double> expected = Optional.ofNullable(expectedValue);
+        OptionalDouble expected = expectedValue == null ? OptionalDouble.empty() : OptionalDouble.of(expectedValue);
         // when
-        Optional<Double> actual = service.findAvg(arrayEntity);
+        OptionalDouble actual = service.findAvg(arrayEntity);
         // then
         assertEquals(actual, expected);
     }
@@ -83,9 +85,9 @@ public class SearchServiceImplImplUnitTest {
     public void whenFindSum_givenFindSumData(int[] array, Integer expectedValue) {
         // given
         ArrayEntity arrayEntity = new ArrayEntity(array);
-        Optional<Integer> expected = Optional.ofNullable(expectedValue);
+        OptionalInt expected = expectedValue == null ? OptionalInt.empty() : OptionalInt.of(expectedValue);
         // when
-        Optional<Integer> actual = service.findSum(arrayEntity);
+        OptionalInt actual = service.findSum(arrayEntity);
         // then
         assertEquals(actual, expected);
     }
@@ -99,12 +101,12 @@ public class SearchServiceImplImplUnitTest {
 
     @ParameterizedTest
     @MethodSource("findCountPositiveElementsData")
-    public void whenFindCountPositiveElements_givenFindCountPositiveElementsData(int[] array, Integer expectedValue) {
+    public void whenFindCountPositiveElements_givenFindCountPositiveElementsData(int[] array, Long expectedValue) {
         // given
         ArrayEntity arrayEntity = new ArrayEntity(array);
-        Optional<Integer> expected = Optional.ofNullable(expectedValue);
+        OptionalLong expected = expectedValue == null ? OptionalLong.empty() : OptionalLong.of(expectedValue);
         // when
-        Optional<Integer> actual = service.findCountPositiveElements(arrayEntity);
+        OptionalLong actual = service.findCountPositiveElements(arrayEntity);
         // then
         assertEquals(actual, expected);
     }
@@ -112,21 +114,21 @@ public class SearchServiceImplImplUnitTest {
     private static Object[][] findCountPositiveElementsData() {
         return new Object[][] {
                 {new int[0] , null},
-                {new int[] {1, 2, 3}, 3},
-                {new int[] {0, 1, 2}, 2},
-                {new int[] {-1, 0, 1}, 1},
-                {new int[] {-1, -1, 0}, 0}
+                {new int[] {1, 2, 3}, 3L},
+                {new int[] {0, 1, 2}, 2L},
+                {new int[] {-1, 0, 1}, 1L},
+                {new int[] {-1, -1, 0}, 0L}
         };
     }
 
     @ParameterizedTest
     @MethodSource("findCountNegativeElementsData")
-    public void whenFindCountNegativeElements_givenFindCountNegativeElementsData(int[] array, Integer expectedValue) {
+    public void whenFindCountNegativeElements_givenFindCountNegativeElementsData(int[] array, Long expectedValue) {
         // given
         ArrayEntity arrayEntity = new ArrayEntity(array);
-        Optional<Integer> expected = Optional.ofNullable(expectedValue);
+        OptionalLong expected = expectedValue == null ? OptionalLong.empty() : OptionalLong.of(expectedValue);
         // when
-        Optional<Integer> actual = service.findCountNegativeElements(arrayEntity);
+        OptionalLong actual = service.findCountNegativeElements(arrayEntity);
         // then
         assertEquals(actual, expected);
     }
@@ -134,10 +136,10 @@ public class SearchServiceImplImplUnitTest {
     private static Object[][] findCountNegativeElementsData() {
         return new Object[][] {
                 {new int[0] , null},
-                {new int[] {-1, -2, -3}, 3},
-                {new int[] {0, -1, -2}, 2},
-                {new int[] {-1, 0, 1}, 1},
-                {new int[] {0, 1, 2}, 0}
+                {new int[] {-1, -2, -3}, 3L},
+                {new int[] {0, -1, -2}, 2L},
+                {new int[] {-1, 0, 1}, 1L},
+                {new int[] {0, 1, 2}, 0L}
         };
     }
 

@@ -1,4 +1,4 @@
-package com.bahamazau.impl.service;
+package com.bahamazau.impl.service.custom;
 
 import com.bahamazau.api.entity.ArrayEntity;
 import com.bahamazau.api.service.SortService;

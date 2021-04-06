@@ -1,8 +1,8 @@
-package com.bahamazau.impl.service.file;
+package com.bahamazau.impl.service.custom;
 
 import java.util.regex.Pattern;
 
-public class FileValidationService {
+public class ValidationService {
 
     private static final String SPACES_REGEX = "\\s+";
 
@@ -15,7 +15,7 @@ public class FileValidationService {
      * @param nextLine string for parse on array
      * @return true if string is not empty and contain only digits
      */
-    boolean containOnlyDigits(String nextLine) {
+    public boolean containOnlyDigits(String nextLine) {
         for (String element: nextLine.split(SPACES_REGEX)) {
             if (PATTERN_NOT_DIGITS.matcher(element).find()) {
                 return false;

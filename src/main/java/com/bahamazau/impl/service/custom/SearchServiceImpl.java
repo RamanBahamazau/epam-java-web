@@ -1,14 +1,16 @@
-package com.bahamazau.impl.service;
+package com.bahamazau.impl.service.custom;
 
 import com.bahamazau.api.entity.ArrayEntity;
 import com.bahamazau.api.service.SearchService;
 
-import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 public class SearchServiceImpl implements SearchService {
 
     @Override
-    public Optional<Integer> findMax(ArrayEntity arrayEntity) {
+    public OptionalInt findMax(ArrayEntity arrayEntity) {
         if (arrayEntity.copyData().isPresent()) {
             final int[] array = arrayEntity.copyData().get();
 
@@ -17,14 +19,14 @@ public class SearchServiceImpl implements SearchService {
                 maxValue = element > maxValue ? element : maxValue;
             }
 
-            return Optional.of(maxValue);
+            return OptionalInt.of(maxValue);
         }
 
-        return Optional.empty();
+        return OptionalInt.empty();
     }
 
     @Override
-    public Optional<Integer> findMin(ArrayEntity arrayEntity) {
+    public OptionalInt findMin(ArrayEntity arrayEntity) {
         if (arrayEntity.copyData().isPresent()) {
             final int[] array = arrayEntity.copyData().get();
 
@@ -33,35 +35,35 @@ public class SearchServiceImpl implements SearchService {
                 minValue = element < minValue ? element : minValue;
             }
 
-            return Optional.of(minValue);
+            return OptionalInt.of(minValue);
         }
 
-        return Optional.empty();
+        return OptionalInt.empty();
     }
 
     @Override
-    public Optional<Double> findAvg(ArrayEntity arrayEntity) {
+    public OptionalDouble findAvg(ArrayEntity arrayEntity) {
         if (arrayEntity.copyData().isPresent()) {
             final int[] array = arrayEntity.copyData().get();
-            Double avgValue = (double) sum(arrayEntity) / array.length;
-            return Optional.of(avgValue);
+            double avgValue = (double) sum(arrayEntity) / array.length;
+            return OptionalDouble.of(avgValue);
         }
 
-        return Optional.empty();
+        return OptionalDouble.empty();
     }
 
     @Override
-    public Optional<Integer> findSum(ArrayEntity arrayEntity) {
+    public OptionalInt findSum(ArrayEntity arrayEntity) {
         if (arrayEntity.copyData().isPresent()) {
-            Integer sum = sum(arrayEntity);
-            return Optional.of(sum);
+            int sum = sum(arrayEntity);
+            return OptionalInt.of(sum);
         }
 
-        return Optional.empty();
+        return OptionalInt.empty();
     }
 
     @Override
-    public Optional<Integer> findCountPositiveElements(ArrayEntity arrayEntity) {
+    public OptionalLong findCountPositiveElements(ArrayEntity arrayEntity) {
         if (arrayEntity.copyData().isPresent()) {
             int count = 0;
             for (int element: arrayEntity.copyData().get()) {
@@ -69,14 +71,14 @@ public class SearchServiceImpl implements SearchService {
                     count ++;
                 }
             }
-            return Optional.of(count);
+            return OptionalLong.of(count);
         }
 
-        return Optional.empty();
+        return OptionalLong.empty();
     }
 
     @Override
-    public Optional<Integer> findCountNegativeElements(ArrayEntity arrayEntity) {
+    public OptionalLong findCountNegativeElements(ArrayEntity arrayEntity) {
         if (arrayEntity.copyData().isPresent()) {
             int count = 0;
             for (int element: arrayEntity.copyData().get()) {
@@ -85,10 +87,10 @@ public class SearchServiceImpl implements SearchService {
                 }
             }
 
-            return Optional.of(count);
+            return OptionalLong.of(count);
         }
 
-        return Optional.empty();
+        return OptionalLong.empty();
     }
 
     private int sum(ArrayEntity arrayEntity) {

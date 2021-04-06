@@ -1,4 +1,4 @@
-package com.bahamazau.impl.service.file;
+package com.bahamazau.impl.service.custom;
 
 import com.bahamazau.api.exception.ArrayException;
 import com.bahamazau.api.service.FileReaderService;
@@ -20,7 +20,7 @@ public class FileReaderServiceImpl implements FileReaderService {
 
     private static final Logger LOGGER = LogManager.getLogger(FileReaderServiceImpl.class);
 
-    private final FileValidationService fileValidationService = new FileValidationService();
+    private final ValidationService validationService = new ValidationService();
 
     /**
      * Search in file string with only digits.
@@ -40,7 +40,7 @@ public class FileReaderServiceImpl implements FileReaderService {
 
             while (scanner.hasNextLine()) {
                 String nextLine = scanner.nextLine();
-                if (fileValidationService.containOnlyDigits(nextLine)) {
+                if (validationService.containOnlyDigits(nextLine)) {
                     return nextLine;
                 }
             }
