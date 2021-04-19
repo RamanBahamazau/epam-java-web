@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<banks>
+
+    <bankDeposit id="1">
+        <name>BelInvestBank</name>
+        <country>Belarus</country>
+        <type>BEFORE_DEMAND</type>
+        <depositor>Raman</depositor>
+        <account-id>z3s-x8n-6q6-exw-x6p</account-id>
+        <amount-on-deposit>100000</amount-on-deposit>
+        <profitability>5%</profitability>
+        <time-constraints>01-01-2021 10:10:10</time-constraints>
+    </bankDeposit>
+
+    <bankDeposit id="2">
+        <name>BelarusBank</name>
+        <country>Belarus</country>
+        <type>URGENT</type>
+        <depositor>Antony</depositor>
+        <account-id>827-upf-ywr-vud-9ac</account-id>
+        <amount-on-deposit>111000</amount-on-deposit>
+        <profitability>5%</profitability>
+        <time-constraints>02-01-2021 11:11:11</time-constraints>
+    </bankDeposit>
+
+    <bankDeposit id="3">
+        <name>BelAgroPromBank</name>
+        <country>Belarus</country>
+        <type>CALCULATED</type>
+        <depositor>Ivan</depositor>
+        <account-id>xiw-abc-h7a-o32-2qw</account-id>
+        <amount-on-deposit>123000</amount-on-deposit>
+        <profitability>5%</profitability>
+        <time-constraints>03-01-2021 12:12:12</time-constraints>
+    </bankDeposit>
+
+    <bankDeposit id="4">
+        <name>BelGazPromBank</name>
+        <country>Belarus</country>
+        <type>CUMULATIVE</type>
+        <depositor>Vasily</depositor>
+        <account-id>crj-5ha-c8g-7ze-yhf</account-id>
+        <amount-on-deposit>130000</amount-on-deposit>
+        <profitability>7%</profitability>
+        <time-constraints>04-01-2021 13:13:13</time-constraints>
+    </bankDeposit>
+
+    <bankDeposit id="5">
+        <name>Alfa-Bank</name>
+        <country>Russia</country>
+        <type>SAVINGS</type>
+        <depositor>Wladimir</depositor>
+        <account-id>52t-obc-eyt-mzy-ffm</account-id>
+        <amount-on-deposit>140000</amount-on-deposit>
+        <profitability>7%</profitability>
+        <time-constraints>05-01-2021 14:14:14</time-constraints>
+    </bankDeposit>
+
+    <bankDeposit id="6">
+        <name>Prior-Bank</name>
+        <country>Russia</country>
+        <type>METAL</type>
+        <depositor>Michael</depositor>
+        <account-id>fjj-njz-6x6-esf-v7t</account-id>
+        <amount-on-deposit>150000</amount-on-deposit>
+        <profitability>7%</profitability>
+        <time-constraints>06-01-2021 15:15:15</time-constraints>
+    </bankDeposit>
+
+    <bankDeposit id="7">
+        <name>Sberbank</name>
+        <country>Russia</country>
+        <type>BEFORE_DEMAND</type>
+        <depositor>Oleg</depositor>
+        <account-id>g8i-idw-qqb-xik-a7c</account-id>
+        <amount-on-deposit>160000</amount-on-deposit>
+        <profitability>9.5%</profitability>
+        <time-constraints>07-01-2021 16:16:16</time-constraints>
+    </bankDeposit>
+
+    <bankDeposit id="8">
+        <name>VTB Bank</name>
+        <country>Russia</country>
+        <type>URGENT</type>
+        <depositor>Dimitry</depositor>
+        <account-id>m4g-ymj-qwu-tqx-ztx</account-id>
+        <amount-on-deposit>175000</amount-on-deposit>
+        <profitability>9.5%</profitability>
+        <time-constraints>08-01-2021 17:17:17</time-constraints>
+    </bankDeposit>
+
+    <bankDeposit id="9">
+        <name>KFW Bankgruppe</name>
+        <country>German</country>
+        <type>CALCULATED</type>
+        <depositor>Alexander</depositor>
+        <account-id>zkk-cgg-bfj-iuc-pyh</account-id>
+        <amount-on-deposit>183000</amount-on-deposit>
+        <profitability>9.5%</profitability>
+        <time-constraints>09-01-2021 18:18:18</time-constraints>
+    </bankDeposit>
+
+    <bankDeposit id="10">
+        <name>DZ Bank</name>
+        <country>German</country>
+        <type>CUMULATIVE</type>
+        <depositor>Bjorn</depositor>
+        <account-id>vwc-m93-xix-evr-9af</account-id>
+        <amount-on-deposit>197000</amount-on-deposit>
+        <profitability>11.3%</profitability>
+        <time-constraints>10-01-2021 19:19:19</time-constraints>
+    </bankDeposit>
+
+    <bankDeposit id="11">
+        <name>Landesbank Baden-Württemberg</name>
+        <country>German</country>
+        <type>SAVINGS</type>
+        <depositor>Lukas</depositor>
+        <account-id>6uh-rs6-azk-n8y-9q7</account-id>
+        <amount-on-deposit>210000</amount-on-deposit>
+        <profitability>11.4%</profitability>
+        <time-constraints>11-01-2021 20:20:20</time-constraints>
+    </bankDeposit>
+
+    <bankDeposit id="12">
+        <name>Norddeutsche Landesbank</name>
+        <country>German</country>
+        <type>METAL</type>
+        <depositor>Arne</depositor>
+        <account-id>4ku-6mb-mjg-5bc-2o8</account-id>
+        <amount-on-deposit>212000</amount-on-deposit>
+        <profitability>11.2%</profitability>
+        <time-constraints>12-01-2021 21:21:21</time-constraints>
+    </bankDeposit>
+
+    <bankDeposit id="13">
+        <name>HSBC Holdings</name>
+        <country>United Kingdom</country>
+        <type>BEFORE_DEMAND</type>
+        <depositor>Barbara</depositor>
+        <account-id>879-itd-9yn-nrz-nq5</account-id>
+        <amount-on-deposit>224000</amount-on-deposit>
+        <profitability>15.6%</profitability>
+        <time-constraints>13-01-2021 22:22:22</time-constraints>
+    </bankDeposit>
+
+    <bankDeposit id="14">
+        <name>Close Brothers</name>
+        <country>United Kingdom</country>
+        <type>URGENT</type>
+        <depositor>Linda</depositor>
+        <account-id>cdf-kdg-ek6-pbu-45t</account-id>
+        <amount-on-deposit>233000</amount-on-deposit>
+        <profitability>15.7%</profitability>
+        <time-constraints>14-01-2021 23:23:23</time-constraints>
+    </bankDeposit>
+
+    <bankDeposit id="15">
+        <name>Santander UK</name>
+        <country>United Kingdom</country>
+        <type>CALCULATED</type>
+        <depositor>John</depositor>
+        <account-id>q6n-j3e-crt-iiw-c27</account-id>
+        <amount-on-deposit>245000</amount-on-deposit>
+        <profitability>15.9%</profitability>
+        <time-constraints>15-01-2021 00:00:00</time-constraints>
+    </bankDeposit>
+
+    <bankDeposit id="16">
+        <name>Royal Bank of Scotland</name>
+        <country>United Kingdom</country>
+        <type>CUMULATIVE</type>
+        <depositor>Steven</depositor>
+        <account-id>wv7-ftm-zxj-e7m-zp7</account-id>
+        <amount-on-deposit>252000</amount-on-deposit>
+        <profitability>19.75%</profitability>
+        <time-constraints>16-01-2021 01:01:01</time-constraints>
+    </bankDeposit>
+
+</banks>
