@@ -15,11 +15,7 @@ public class SaxParser extends BankDepositBuilderMother {
     public SaxParser(){}
 
     @Override
-    public void buildArrayBanks(String filename) throws CustomException {
-
-    }
-
-    public SaxParser(String filename) throws CustomException {
+    public void buildBankDepositsArray(String filename) throws CustomException {
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser parser = factory.newSAXParser();

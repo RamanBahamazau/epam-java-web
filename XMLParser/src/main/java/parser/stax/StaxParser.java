@@ -33,7 +33,7 @@ public class StaxParser extends BankDepositBuilderMother {
     }
 
     @Override
-    public void buildArrayBanks(String filename) throws CustomException {
+    public void buildBankDepositsArray(String filename) throws CustomException {
 
     }
 

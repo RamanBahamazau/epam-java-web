@@ -3,27 +3,28 @@ package parser;
 import entity.BankDeposit;
 import exception.CustomException;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public abstract class BankDepositBuilderMother {
 
-    private ArrayList<BankDeposit> abstractBanks;
+    protected Set<BankDeposit> bankDeposits;
 
-    public BankDepositBuilderMother() {
-        abstractBanks = new ArrayList<>();
+    public BankDepositBuilderMother(Set<BankDeposit> bankDeposits){
+        this.bankDeposits = bankDeposits;
     }
 
-    public BankDepositBuilderMother(ArrayList<BankDeposit> abstractBanks){
-        this.abstractBanks = abstractBanks;
+    protected BankDepositBuilderMother() {
+        bankDeposits = new HashSet<>();
     }
 
-    public ArrayList<BankDeposit> getAbstractBanks() throws CustomException {
-        if (abstractBanks.isEmpty()){
+    public Set<BankDeposit> getBankDeposits() throws CustomException {
+        if (bankDeposits.isEmpty()){
             throw new CustomException("Array is empty");
         }
-        return (ArrayList<BankDeposit>) abstractBanks.clone();
+        return new HashSet<>(bankDeposits);
     }
 
-    public abstract void buildArrayBanks(String filename) throws CustomException;
+    public abstract void buildBankDepositsArray(String filename) throws CustomException;
 
 }

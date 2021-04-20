@@ -10,7 +10,9 @@ import java.util.Locale;
 public class BankDepositBuilder {
 
     private enum TypeOfParser{
-        DOM, SAX, STAX
+        DOM,
+        SAX,
+        STAX
     }
 
     public static BankDepositBuilderMother createXML(String typeOfParser) throws CustomException {
