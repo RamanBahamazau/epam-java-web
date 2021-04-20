@@ -10,10 +10,6 @@ public abstract class ParserMother {
 
     protected Set<BankDeposit> bankDeposits;
 
-    public ParserMother(Set<BankDeposit> bankDeposits){
-        this.bankDeposits = bankDeposits;
-    }
-
     protected ParserMother() {
         bankDeposits = new HashSet<>();
     }
@@ -25,6 +21,6 @@ public abstract class ParserMother {
         return new HashSet<>(bankDeposits);
     }
 
-    public abstract void buildBankDepositsArray(String filename) throws CustomException;
+    public abstract void parse(String filePath) throws CustomException;
 
 }

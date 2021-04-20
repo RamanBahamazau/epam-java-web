@@ -17,7 +17,7 @@ import java.util.Set;
 public class SaxXmlHandler extends DefaultHandler {
 
     private String currentElement;
-    private Long id = 1L;
+    private Long id;
     private String name;
     private String country;
     private DepositType type;

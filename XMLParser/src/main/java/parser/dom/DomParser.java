@@ -29,9 +29,9 @@ public class DomParser extends ParserMother {
     }
 
     @Override
-    public void buildBankDepositsArray(String filename) throws CustomException {
+    public void parse(String filePath) throws CustomException {
         try {
-            File file = new File(filename);
+            File file = new File(filePath);
             Document document = documentBuilder.parse(file);
             document.getDocumentElement().normalize();
             Element root = document.getDocumentElement();
