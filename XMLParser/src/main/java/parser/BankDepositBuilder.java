@@ -15,7 +15,7 @@ public class BankDepositBuilder {
         STAX
     }
 
-    public static BankDepositBuilderMother createXML(String typeOfParser) throws CustomException {
+    public static ParserMother createXML(String typeOfParser) throws CustomException {
         TypeOfParser type = TypeOfParser.valueOf(typeOfParser.toLowerCase(Locale.ROOT));
         switch (type){
             case DOM:

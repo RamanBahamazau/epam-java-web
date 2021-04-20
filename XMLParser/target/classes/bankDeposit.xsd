@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="bankDeposit" type="depositType" />
+
+    <xs:complexType name="bankType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="name" />
+            <xs:element type="xs:string" name="country" />
+            <xs:element name="type">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="BEFORE_DEMAND" />
+                        <xs:enumeration value="URGENT" />
+                        <xs:enumeration value="CALCULATED" />
+                        <xs:enumeration value="CUMULATIVE" />
+                        <xs:enumeration value="SAVINGS" />
+                        <xs:enumeration value="METAL" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element type="xs:string" name="depositor" />
+            <xs:element type="xs:string" name="account-id" />
+            <xs:element type="xs:double" name="amount-on-deposit" />
+            <xs:element type="xs:double" name="profitability" />
+            <xs:element type="xs:dateTime" name="time-constraints" />
+        </xs:sequence>
+        <xs:attribute type="xs:long" name="id" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="depositType">
+        <xs:sequence>
+            <xs:element type="bankType" name="bankDeposit" maxOccurs="unbounded" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

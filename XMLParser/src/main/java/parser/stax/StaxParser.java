@@ -1,7 +1,7 @@
 package parser.stax;
 
 import exception.CustomException;
-import parser.BankDepositBuilderMother;
+import parser.ParserMother;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.OutputKeys;
@@ -15,7 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.StringReader;
 import java.io.StringWriter;
 
-public class StaxParser extends BankDepositBuilderMother {
+public class StaxParser extends ParserMother {
 
     public void staxParser(String path) throws CustomException, XMLStreamException, FileNotFoundException, TransformerException {
         System.out.println(transformXML(4, (new StaxXmlHandler()).processXMLFile(new File(path))));

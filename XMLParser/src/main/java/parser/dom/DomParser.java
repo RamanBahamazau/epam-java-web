@@ -1,6 +1,6 @@
 package parser.dom;
 
-import static parser.BankDepositTags.*;
+import static parser.ParserMother.BankDepositTags.*;
 
 import entity.BankDeposit;
 import exception.CustomException;
@@ -8,15 +8,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import parser.BankDepositBuilderMother;
-import parser.BankDepositTags;
+import parser.ParserMother;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.stream.IntStream;
 
-public class DomParser extends BankDepositBuilderMother {
+public class DomParser extends ParserMother {
 
     private final DocumentBuilder documentBuilder;
 
@@ -24,7 +23,7 @@ public class DomParser extends BankDepositBuilderMother {
         try {
             documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         } catch (Exception e) {
-            throw new CustomException("Parser configuration exception: " + e.getCause());
+            throw new CustomException("Document builder configuration exception: " + e.getCause());
         }
     }
 
@@ -40,20 +39,20 @@ public class DomParser extends BankDepositBuilderMother {
             IntStream.range(0, banksList.getLength())
                     .mapToObj(i -> (Element) banksList.item(i))
                     .map(this::buildBank)
-                    .forEach(bankDeposit -> bankDeposits.add(bankDeposit));
+                    .forEach(bankDeposits::add);
         } catch (Exception e) {
             throw new CustomException("Parsing problem, file not found: " + e.getCause());
         }
     }
 
     private BankDeposit buildBank(Element bankDepositElement) {
-        String id = getElementTextContent(bankDepositElement, ID);
+        String id = bankDepositElement.getAttribute(ID.getId());
         String name = getElementTextContent(bankDepositElement, NAME);
         String country = getElementTextContent(bankDepositElement, COUNTRY);
         String type = getElementTextContent(bankDepositElement, TYPE);
         String depositor = getElementTextContent(bankDepositElement, DEPOSITOR);
         String accountId = getElementTextContent(bankDepositElement, ACCOUNT_ID);
-        String amountOnDeposit = getElementTextContent(bankDepositElement, DEPOSITOR);
+        String amountOnDeposit = getElementTextContent(bankDepositElement, AMOUNT_ON_DEPOSIT);
         String profitability = getElementTextContent(bankDepositElement, PROFITABILITY);
         String timeConstraints = getElementTextContent(bankDepositElement, TIME_CONSTRAINTS);
 

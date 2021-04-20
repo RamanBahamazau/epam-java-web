@@ -1,12 +1,13 @@
 package parser.sax;
 
+import static parser.ParserMother.BankDepositTags.*;
+
 import entity.BankDeposit;
 import entity.DepositType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
-import parser.BankDepositTags;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -47,7 +48,7 @@ public class SaxXmlHandler extends DefaultHandler {
             return;
         }
 
-        switch (BankDepositTags.valueOf(currentElement)) {
+        switch (valueOf(currentElement)) {
             case ID:
                 id = Long.parseLong(information);
                 break;

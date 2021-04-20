@@ -3,14 +3,14 @@ package parser.sax;
 import exception.CustomException;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
-import parser.BankDepositBuilderMother;
+import parser.ParserMother;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 
-public class SaxParser extends BankDepositBuilderMother {
+public class SaxParser extends ParserMother {
 
     public SaxParser(){}
 
