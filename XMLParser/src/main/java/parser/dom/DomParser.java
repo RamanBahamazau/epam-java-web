@@ -1,19 +1,20 @@
 package parser.dom;
 
-import static parser.ParserMother.BankDepositTags.*;
-
 import entity.BankDeposit;
 import exception.CustomException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import parser.BankDepositTag;
 import parser.ParserMother;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.stream.IntStream;
+
+import static parser.BankDepositTag.*;
 
 public class DomParser extends ParserMother {
 
@@ -59,7 +60,7 @@ public class DomParser extends ParserMother {
         return new BankDeposit(id, name, country, type, depositor, accountId, amountOnDeposit, profitability, timeConstraints);
     }
 
-    private static String getElementTextContent(Element element, BankDepositTags elementName) {
+    private static String getElementTextContent(Element element, BankDepositTag elementName) {
         NodeList nodeList = element.getElementsByTagName(elementName.getId());
         Node node = nodeList.item(0);
         return node.getTextContent();

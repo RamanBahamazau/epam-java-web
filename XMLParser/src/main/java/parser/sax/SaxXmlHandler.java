@@ -1,6 +1,6 @@
 package parser.sax;
 
-import static parser.ParserMother.BankDepositTags.*;
+import static parser.BankDepositTag.*;
 
 import entity.BankDeposit;
 import entity.DepositType;
@@ -17,7 +17,7 @@ import java.util.Set;
 public class SaxXmlHandler extends DefaultHandler {
 
     private String currentElement;
-    private Long id;
+    private Long id = 1L;
     private String name;
     private String country;
     private DepositType type;
@@ -26,7 +26,7 @@ public class SaxXmlHandler extends DefaultHandler {
     private Double amountOnDeposit;
     private Double profitability;
 
-    public static final Set<BankDeposit> arrayList = new HashSet<>();
+    private final Set<BankDeposit> listBankDeposit = new HashSet<>();
 
     private final Logger logger = LogManager.getLogger();
 
@@ -37,6 +37,10 @@ public class SaxXmlHandler extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
+        String value = attributes.getValue("id");
+        if (value != null) {
+            id = Long.parseLong(value);
+        }
         currentElement = qName;
         logger.info(qName);
     }
@@ -44,40 +48,28 @@ public class SaxXmlHandler extends DefaultHandler {
     @Override
     public void characters(char[] ch, int start, int length) {
         String information = new String(ch, start, length).replace("\n", "").trim();
-        if (information.contains("<") || currentElement == null || information.isEmpty()) {
+        if (currentElement == null || information.isEmpty() || information.contains("<")) {
             return;
         }
 
-        switch (valueOf(currentElement)) {
-            case ID:
-                id = Long.parseLong(information);
-                break;
-            case NAME:
-                name = information;
-                break;
-            case COUNTRY:
-                country = information;
-                break;
-            case TYPE:
-                type = DepositType.valueOf(information);
-                break;
-            case DEPOSITOR:
-                depositor = information;
-                break;
-            case ACCOUNT_ID:
-                accountId = information;
-                break;
-            case AMOUNT_ON_DEPOSIT:
-                amountOnDeposit = Double.parseDouble(information);
-                break;
-            case PROFITABILITY:
-                profitability = Double.parseDouble(information);
-                break;
-            case TIME_CONSTRAINTS:
-                LocalDateTime timeConstraints = LocalDateTime.parse(information, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
-                BankDeposit bankDeposit = new BankDeposit(id, name, country, type, depositor, accountId, amountOnDeposit, profitability, timeConstraints);
-                arrayList.add(bankDeposit);
-                break;
+        if (currentElement.equals(NAME.getId())) {
+            name = information;
+        } else if (currentElement.equals(COUNTRY.getId())) {
+            country = information;
+        } else if (currentElement.equals(TYPE.getId())) {
+            type = DepositType.valueOf(information);
+        } else if (currentElement.equals(DEPOSITOR.getId())) {
+            depositor = information;
+        } else if (currentElement.equals(ACCOUNT_ID.getId())) {
+            accountId = information;
+        } else if (currentElement.equals(AMOUNT_ON_DEPOSIT.getId())) {
+            amountOnDeposit = Double.parseDouble(information);
+        } else if (currentElement.equals(PROFITABILITY.getId())) {
+            profitability = Double.parseDouble(information);
+        } else if (currentElement.equals(TIME_CONSTRAINTS.getId())) {
+            LocalDateTime timeConstraints = LocalDateTime.parse(information, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+            BankDeposit bankDeposit = new BankDeposit(id, name, country, type, depositor, accountId, amountOnDeposit, profitability, timeConstraints);
+            listBankDeposit.add(bankDeposit);
         }
     }
 
@@ -89,6 +81,10 @@ public class SaxXmlHandler extends DefaultHandler {
     @Override
     public void endDocument() {
         logger.info("SAX parsing ended");
+    }
+
+    public Set<BankDeposit> getListBankDeposit() {
+        return listBankDeposit;
     }
 
 }

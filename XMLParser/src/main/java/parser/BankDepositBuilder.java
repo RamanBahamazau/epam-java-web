@@ -5,19 +5,16 @@ import parser.dom.DomParser;
 import parser.sax.SaxParser;
 import parser.stax.StaxParser;
 
-import java.util.Locale;
-
 public class BankDepositBuilder {
 
-    private enum TypeOfParser{
+    public enum TypeOfParser{
         DOM,
         SAX,
         STAX
     }
 
-    public static ParserMother createXML(String typeOfParser) throws CustomException {
-        TypeOfParser type = TypeOfParser.valueOf(typeOfParser.toLowerCase(Locale.ROOT));
-        switch (type){
+    public static ParserMother buildParser(TypeOfParser typeOfParser) throws CustomException {
+        switch (typeOfParser){
             case DOM:
                 return new DomParser();
             case SAX:
@@ -25,7 +22,7 @@ public class BankDepositBuilder {
             case STAX:
                 return new StaxParser();
             default:
-                throw new CustomException("Wrong type of parser");
+                throw new CustomException("Unexpected type of parser!");
         }
     }
 
