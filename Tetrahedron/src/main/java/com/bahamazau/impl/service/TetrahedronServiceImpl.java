@@ -6,50 +6,49 @@ import com.bahamazau.api.TetrahedronService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.List;
+
+import static java.util.Arrays.asList;
+
 public class TetrahedronServiceImpl implements TetrahedronService {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
-    public boolean isBasedOnXY(Tetrahedron tetrahedron) {
-        LOGGER.info("Method is based on XY start");
+    public boolean isBasedOnYZ(Tetrahedron tetrahedron) {
+        boolean isBasedOnYZ = false;
+        for (Triangle triangle: triangleList(tetrahedron)) {
+            isBasedOnYZ = triangle.isBasedOnYZ();
+        }
 
-        Dot dot2 = tetrahedron.getDot2();
-        Dot dot3 = tetrahedron.getDot3();
-        Dot dot4 = tetrahedron.getDot4();
-
-        return isBasedOn(dot2.getZ(), dot3.getZ(), dot4.getZ());
+        LOGGER.info("Tetrahedron is based on YZ: " + isBasedOnYZ);
+        return isBasedOnYZ;
     }
 
     @Override
     public boolean isBasedOnXZ(Tetrahedron tetrahedron) {
-        LOGGER.info("Method is based on XZ start");
+        boolean isBasedOnXZ = false;
+        for (Triangle triangle: triangleList(tetrahedron)) {
+            isBasedOnXZ = triangle.isBasedOnXZ();
+        }
 
-        Dot dot2 = tetrahedron.getDot2();
-        Dot dot3 = tetrahedron.getDot3();
-        Dot dot4 = tetrahedron.getDot4();
-
-        return isBasedOn(dot2.getY(), dot3.getY(), dot4.getY());
+        LOGGER.info("Tetrahedron is based on XZ: " + isBasedOnXZ);
+        return isBasedOnXZ;
     }
 
     @Override
-    public boolean isBasedOnYZ(Tetrahedron tetrahedron) {
-        LOGGER.info("Method is based on YZ start");
+    public boolean isBasedOnXY(Tetrahedron tetrahedron) {
+        boolean isBasedOnXY = false;
+        for (Triangle triangle: triangleList(tetrahedron)) {
+            isBasedOnXY = triangle.isBasedOnXY();
+        }
 
-        Dot dot2 = tetrahedron.getDot2();
-        Dot dot3 = tetrahedron.getDot3();
-        Dot dot4 = tetrahedron.getDot4();
-
-        return isBasedOn(dot2.getX(), dot3.getX(), dot4.getX());
-    }
-
-    private boolean isBasedOn(double coordinate1, double coordinate2, double coordinate3) {
-        return coordinate1 == 0 && coordinate2 == 0 && coordinate3 == 0;
+        LOGGER.info("Tetrahedron is based on XY: " + isBasedOnXY);
+        return isBasedOnXY;
     }
 
     @Override
     public double calculateVolume(Tetrahedron tetrahedron) {
-        LOGGER.info("Method to calculate volume of tetrahedron start");
         double height = calculateHeight(tetrahedron);
         double baseArea = calculateBaseArea(tetrahedron);
         double volume = height * baseArea / 3;
@@ -60,8 +59,6 @@ public class TetrahedronServiceImpl implements TetrahedronService {
 
     @Override
     public double calculateSurfaceArea(Tetrahedron tetrahedron) {
-        LOGGER.info("Method to calculate surface area of tetrahedron start");
-
         Dot apexPoint = tetrahedron.getDot1();
         Dot basePoint1 = tetrahedron.getDot2();
         Dot basePoint2 = tetrahedron.getDot3();
@@ -79,7 +76,6 @@ public class TetrahedronServiceImpl implements TetrahedronService {
 
     @Override
     public double calculateHeight(Tetrahedron tetrahedron) {
-        LOGGER.info("Method to calculate height of tetrahedron start");
         Dot apexPoint = tetrahedron.getDot1();
         Dot basePoint1 = tetrahedron.getDot2();
         Dot basePoint2 = tetrahedron.getDot3();
@@ -102,8 +98,6 @@ public class TetrahedronServiceImpl implements TetrahedronService {
 
     @Override
     public double calculateBasePerimeter(Tetrahedron tetrahedron) {
-        LOGGER.info("Method to calculate base perimeter of tetrahedron start");
-
         Dot basePoint1 = tetrahedron.getDot2();
         Dot basePoint2 = tetrahedron.getDot3();
         Dot basePoint3 = tetrahedron.getDot4();
@@ -119,21 +113,10 @@ public class TetrahedronServiceImpl implements TetrahedronService {
 
     @Override
     public double calculateBaseArea(Tetrahedron tetrahedron) {
-        LOGGER.info("Method to calculate base area of tetrahedron start");
-
         double area = calculateFaceArea(tetrahedron.getDot2(), tetrahedron.getDot3(), tetrahedron.getDot4());
-
         LOGGER.info("Base area of tetrahedron with id=" + tetrahedron.getId() + " : " + area);
+
         return area;
-    }
-
-    private double calculateFaceArea(Dot point1, Dot point2, Dot point3) {
-        double edge1 = calculateDistanceBetweenPoints(point1, point2);
-        double edge2 = calculateDistanceBetweenPoints(point2, point3);
-        double edge3 = calculateDistanceBetweenPoints(point3, point1);
-        double p = (edge1 + edge2 + edge3) / 2;
-
-        return Math.sqrt(p * (p - edge1) * (p - edge2) * (p - edge3));
     }
 
     @Override
@@ -143,6 +126,61 @@ public class TetrahedronServiceImpl implements TetrahedronService {
         double z = a.getZ() - b.getZ();
 
         return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
+    }
+
+    private class Triangle {
+
+        private final Dot dot1;
+        private final Dot dot2;
+        private final Dot dot3;
+
+        Triangle(Dot dot1, Dot dot2, Dot dot3) {
+            this.dot1 = dot1;
+            this.dot2 = dot2;
+            this.dot3 = dot3;
+        }
+
+        boolean isBasedOnYZ() {
+            return this.dot1.getX() == this.dot2.getX() && this.dot2.getX() == this.dot3.getX();
+        }
+
+        boolean isBasedOnXY() {
+            return this.dot1.getZ() == this.dot2.getZ() && this.dot2.getZ() == this.dot3.getZ();
+        }
+
+        boolean isBasedOnXZ() {
+            return this.dot1.getY() == this.dot2.getY() && this.dot2.getY() == this.dot3.getY();
+        }
+
+    }
+
+    /**
+     * Convert tetrahedron on list of triangles.
+     *
+     * @param tetrahedron
+     * @return list surface of tetrahedron
+     */
+    private List<Triangle> triangleList(Tetrahedron tetrahedron) {
+        Dot dot1 = tetrahedron.getDot1();
+        Dot dot2 = tetrahedron.getDot2();
+        Dot dot3 = tetrahedron.getDot3();
+        Dot dot4 = tetrahedron.getDot4();
+
+        Triangle triangle1 = new Triangle(dot1, dot2, dot3);
+        Triangle triangle2 = new Triangle(dot1, dot2, dot4);
+        Triangle triangle3 = new Triangle(dot1, dot3, dot4);
+        Triangle triangle4 = new Triangle(dot2, dot3, dot4);
+
+        return asList(triangle1, triangle2, triangle3, triangle4);
+    }
+
+    private double calculateFaceArea(Dot point1, Dot point2, Dot point3) {
+        double edge1 = calculateDistanceBetweenPoints(point1, point2);
+        double edge2 = calculateDistanceBetweenPoints(point2, point3);
+        double edge3 = calculateDistanceBetweenPoints(point3, point1);
+        double p = (edge1 + edge2 + edge3) / 2;
+
+        return Math.sqrt(p * (p - edge1) * (p - edge2) * (p - edge3));
     }
 
 }
