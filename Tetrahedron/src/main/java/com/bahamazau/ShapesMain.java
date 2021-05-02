@@ -1,7 +1,7 @@
 package com.bahamazau;
 
+import com.bahamazau.api.entity.dot.Dot;
 import com.bahamazau.impl.entity.TetrahedronFactory;
-import com.bahamazau.impl.entity.dot.Dot;
 import com.bahamazau.impl.exception.CustomException;
 import com.bahamazau.impl.service.parser.TetrahedronPointsParser;
 import com.bahamazau.impl.repository.TetrahedronRepositoryImpl;

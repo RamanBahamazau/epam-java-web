@@ -2,13 +2,17 @@ package com.bahamazau.impl.entity;
 
 import com.bahamazau.api.Observable;
 import com.bahamazau.api.Observer;
-import com.bahamazau.impl.entity.dot.Dot;
+import com.bahamazau.api.entity.Shape;
+import com.bahamazau.api.entity.dot.Dot;
 import com.bahamazau.impl.observer.TetrahedronEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Entity of shape "Tetrahedron". Contain id and 4 dots: apex and 3 base dots.
+ */
 public class Tetrahedron extends Shape implements Observable {
 
     private ArrayList<Observer> observers = new ArrayList<>();
@@ -27,38 +31,38 @@ public class Tetrahedron extends Shape implements Observable {
         notifyObservers();
     }
 
-    public Dot getDot1() {
+    public Dot getApex() {
         return dots.get(0);
     }
 
-    public void setDot1(Dot dot) {
+    public void setApex(Dot dot) {
         this.dots.set(0, dot);
         notifyObservers();
     }
 
-    public Dot getDot2() {
+    public Dot getBaseDot1() {
         return dots.get(1);
     }
 
-    public void setDot2(Dot dot) {
+    public void setBaseDot1(Dot dot) {
         this.dots.set(1, dot);
         notifyObservers();
     }
 
-    public Dot getDot3() {
+    public Dot getBaseDot2() {
         return dots.get(2);
     }
 
-    public void setDot3(Dot dot) {
+    public void setBaseDot2(Dot dot) {
         this.dots.set(2, dot);
         notifyObservers();
     }
 
-    public Dot getDot4() {
+    public Dot getBaseDot3() {
         return dots.get(3);
     }
 
-    public void setDot4(Dot dot) {
+    public void setBaseDot3(Dot dot) {
         this.dots.set(3, dot);
         notifyObservers();
     }
@@ -69,23 +73,23 @@ public class Tetrahedron extends Shape implements Observable {
         if (o == null || getClass() != o.getClass()) return false;
         Tetrahedron that = (Tetrahedron) o;
         return id == that.id && observers.equals(that.observers)
-                && getDot1().equals(that.getDot1()) && getDot2().equals(that.getDot2())
-                && getDot3().equals(that.getDot3()) && getDot4().equals(that.getDot4());
+                && getApex().equals(that.getApex()) && getBaseDot1().equals(that.getBaseDot1())
+                && getBaseDot2().equals(that.getBaseDot2()) && getBaseDot3().equals(that.getBaseDot3());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, getDot1(), getDot2(), getDot3(), getDot4(), observers);
+        return Objects.hash(id, getApex(), getBaseDot1(), getBaseDot2(), getBaseDot3(), observers);
     }
 
     @Override
     public String toString() {
         return new StringBuilder("Tetrahedron {\n")
                 .append(" ID: ").append(id).append('\n')
-                .append(" Dot 1: ").append(getDot1()).append('\n')
-                .append(" Dot 2: ").append(getDot2()).append('\n')
-                .append(" Dot 3: ").append(getDot3()).append('\n')
-                .append(" Dot 4: ").append(getDot4()).append('\n')
+                .append(" Dot 1: ").append(getApex()).append('\n')
+                .append(" Dot 2: ").append(getBaseDot1()).append('\n')
+                .append(" Dot 3: ").append(getBaseDot2()).append('\n')
+                .append(" Dot 4: ").append(getBaseDot3()).append('\n')
                 .append("}")
                 .toString();
     }

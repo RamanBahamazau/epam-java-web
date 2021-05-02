@@ -1,0 +1,107 @@
+2021-05-02 16:24:05,986 INFO c.b.i.r.TetrahedronRepositoryImpl [main] Method to read data from file started
+2021-05-02 16:24:06,008 INFO c.b.i.r.TetrahedronRepositoryImpl [main] Data from file read
+2021-05-02 16:24:06,008 INFO c.b.ShapesMain [main] Method to create tetrahedron repository start
+2021-05-02 16:24:06,008 INFO c.b.i.s.p.TetrahedronPointsParser [main] Method to parse data from file start
+2021-05-02 16:24:06,008 INFO c.b.i.s.p.TetrahedronPointsParserValidator [main] Method to validate points line start
+2021-05-02 16:24:06,008 INFO c.b.i.s.p.TetrahedronPointsParserValidator [main] The string 2.0 -1   1  5 5 3 2.0  -1 4 1  3 has not enough parameters 11
+2021-05-02 16:24:06,008 INFO c.b.i.s.p.TetrahedronPointsParser [main] Method to parse data from file start
+2021-05-02 16:24:06,008 INFO c.b.i.s.p.TetrahedronPointsParserValidator [main] Method to validate points line start
+2021-05-02 16:24:06,008 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,008 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,008 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,008 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,008 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,008 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,008 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,008 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,008 INFO c.b.i.e.TetrahedronFactory [main] Method to create tetrahedron start
+2021-05-02 16:24:06,008 INFO c.b.i.e.TetrahedronFactory [main] The figure with id = 0 is not a tetrahedron
+2021-05-02 16:24:06,008 INFO c.b.i.e.TetrahedronFactory [main] Tetrahedron created
+2021-05-02 16:24:06,024 INFO c.b.i.s.p.TetrahedronPointsParser [main] Method to parse data from file start
+2021-05-02 16:24:06,024 INFO c.b.i.s.p.TetrahedronPointsParserValidator [main] Method to validate points line start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,024 INFO c.b.i.e.TetrahedronFactory [main] Method to create tetrahedron start
+2021-05-02 16:24:06,024 INFO c.b.i.e.TetrahedronFactory [main] The figure with id = 1 is not a tetrahedron
+2021-05-02 16:24:06,024 INFO c.b.i.e.TetrahedronFactory [main] Tetrahedron created
+2021-05-02 16:24:06,024 INFO c.b.i.s.p.TetrahedronPointsParser [main] Method to parse data from file start
+2021-05-02 16:24:06,024 INFO c.b.i.s.p.TetrahedronPointsParserValidator [main] Method to validate points line start
+2021-05-02 16:24:06,024 INFO c.b.i.s.p.TetrahedronPointsParserValidator [main] The string 14 4 5   -5f -3 2  -2 -6 -3 -2 2 -1 has an invalid parameter
+2021-05-02 16:24:06,024 INFO c.b.i.s.p.TetrahedronPointsParser [main] Method to parse data from file start
+2021-05-02 16:24:06,024 INFO c.b.i.s.p.TetrahedronPointsParserValidator [main] Method to validate points line start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,024 INFO c.b.i.e.TetrahedronFactory [main] Method to create tetrahedron start
+2021-05-02 16:24:06,024 INFO c.b.i.e.TetrahedronFactory [main] The figure with id = 2 is not a tetrahedron
+2021-05-02 16:24:06,024 INFO c.b.i.e.TetrahedronFactory [main] Tetrahedron created
+2021-05-02 16:24:06,024 INFO c.b.i.s.p.TetrahedronPointsParser [main] Method to parse data from file start
+2021-05-02 16:24:06,024 INFO c.b.i.s.p.TetrahedronPointsParserValidator [main] Method to validate points line start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,024 INFO c.b.i.e.TetrahedronFactory [main] Method to create tetrahedron start
+2021-05-02 16:24:06,024 INFO c.b.i.e.TetrahedronFactory [main] The figure with id = 3 is not a tetrahedron
+2021-05-02 16:24:06,024 INFO c.b.i.e.TetrahedronFactory [main] Tetrahedron created
+2021-05-02 16:24:06,024 INFO c.b.i.s.p.TetrahedronPointsParser [main] Method to parse data from file start
+2021-05-02 16:24:06,024 INFO c.b.i.s.p.TetrahedronPointsParserValidator [main] Method to validate points line start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,024 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,039 INFO c.b.i.e.TetrahedronFactory [main] Method to create tetrahedron start
+2021-05-02 16:24:06,039 INFO c.b.i.e.TetrahedronFactory [main] The figure with id = 4 is not a tetrahedron
+2021-05-02 16:24:06,039 INFO c.b.i.e.TetrahedronFactory [main] Tetrahedron created
+2021-05-02 16:24:06,039 INFO c.b.i.s.p.TetrahedronPointsParser [main] Method to parse data from file start
+2021-05-02 16:24:06,039 INFO c.b.i.s.p.TetrahedronPointsParserValidator [main] Method to validate points line start
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,039 INFO c.b.i.e.TetrahedronFactory [main] Method to create tetrahedron start
+2021-05-02 16:24:06,039 INFO c.b.i.e.TetrahedronFactory [main] Tetrahedron with id = 5 added to repository
+2021-05-02 16:24:06,039 INFO c.b.i.s.p.TetrahedronPointsParser [main] Method to parse data from file start
+2021-05-02 16:24:06,039 INFO c.b.i.s.p.TetrahedronPointsParserValidator [main] Method to validate points line start
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Method to create point start
+2021-05-02 16:24:06,039 INFO c.b.a.e.d.DotFactory [main] Point created
+2021-05-02 16:24:06,039 INFO c.b.i.e.TetrahedronFactory [main] Method to create tetrahedron start
+2021-05-02 16:24:06,039 INFO c.b.i.e.TetrahedronFactory [main] The figure with id = 6 is not a tetrahedron
+2021-05-02 16:24:06,039 INFO c.b.i.e.TetrahedronFactory [main] Tetrahedron created
+2021-05-02 16:24:06,039 INFO c.b.ShapesMain [main] Tetrahedron repository created
+2021-05-02 16:24:06,039 INFO c.b.ShapesMain [main] [Tetrahedron {
+ ID: 5
+ Dot 1: x = 0.5, y = 0.288, z = 0.816.
+ Dot 2: x = 0.0, y = 0.0, z = 0.0.
+ Dot 3: x = 1.0, y = 0.0, z = 0.0.
+ Dot 4: x = 0.5, y = 0.866, z = 0.0.
+}]

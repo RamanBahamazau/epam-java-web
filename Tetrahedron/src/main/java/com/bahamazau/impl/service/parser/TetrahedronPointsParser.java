@@ -1,7 +1,7 @@
 package com.bahamazau.impl.service.parser;
 
-import com.bahamazau.impl.entity.dot.Dot;
-import com.bahamazau.impl.entity.dot.DotFactory;
+import com.bahamazau.api.entity.dot.Dot;
+import com.bahamazau.api.entity.dot.DotFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

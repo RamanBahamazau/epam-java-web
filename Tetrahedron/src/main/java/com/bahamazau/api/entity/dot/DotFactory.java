@@ -1,4 +1,4 @@
-package com.bahamazau.impl.entity.dot;
+package com.bahamazau.api.entity.dot;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
