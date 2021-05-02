@@ -12,6 +12,9 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
+/**
+ * TODO: transform methods for irregular tetrahedrons.
+ */
 public class TetrahedronService implements ShapeService {
 
     private static final Logger LOGGER = LogManager.getLogger();
@@ -20,18 +23,12 @@ public class TetrahedronService implements ShapeService {
     public double calculateSurfaceArea(Shape shape) throws CustomException {
         Tetrahedron tetrahedron = convertShape(shape);
 
-        Dot apexPoint = tetrahedron.getApex();
-        Dot basePoint1 = tetrahedron.getBaseDot1();
-        Dot basePoint2 = tetrahedron.getBaseDot2();
-        Dot basePoint3 = tetrahedron.getBaseDot3();
+        double surfaceArea = 0;
+        for (Triangular triangular: triangleList(tetrahedron)) {
+            surfaceArea += triangular.calculateFaceArea();
+        }
 
-        double area1 = calculateFaceArea(apexPoint, basePoint1, basePoint2);
-        double area2 = calculateFaceArea(apexPoint, basePoint2, basePoint3);
-        double area3 = calculateFaceArea(apexPoint, basePoint3, basePoint1);
-        double baseArea = calculateBaseArea(tetrahedron);
-        double surfaceArea = area1 + area2 + area3 + baseArea;
-
-        LOGGER.info("Height of tetrahedron with id=" + tetrahedron.getId() + " : " + surfaceArea);
+        LOGGER.info("Surface area of tetrahedron is equal to: " + surfaceArea);
         return surfaceArea;
     }
 
@@ -39,19 +36,20 @@ public class TetrahedronService implements ShapeService {
     public double calculateVolume(Shape shape) throws CustomException {
         Tetrahedron tetrahedron = convertShape(shape);
 
-        double baseArea = calculateBaseArea(tetrahedron);
+        Triangular baseTriangular = new Triangular(
+                tetrahedron.getBaseDot1(), tetrahedron.getBaseDot2(), tetrahedron.getBaseDot3());
+        double baseArea = baseTriangular.calculateFaceArea();
         double height = calculateHeight(tetrahedron);
-
         double volume = baseArea * height / 3;
-        LOGGER.info("Volume of tetrahedron with id = " + tetrahedron.getId() + " : " + volume);
+
+        LOGGER.info("Volume of tetrahedron is equal to: " + volume);
         return volume;
     }
 
-    @Override
     public boolean isTetrahedron(List<Dot> dotList) {
-        return (distanceBetweenPoints(dotList.get(1), dotList.get(2)) != 0
-                    && distanceBetweenPoints(dotList.get(2), dotList.get(3)) != 0
-                    && distanceBetweenPoints(dotList.get(3), dotList.get(1)) != 0)
+        return (distanceBetweenDots(dotList.get(1), dotList.get(2)) != 0
+                    && distanceBetweenDots(dotList.get(2), dotList.get(3)) != 0
+                    && distanceBetweenDots(dotList.get(3), dotList.get(1)) != 0)
                 && isValid(dotList.get(0), dotList.get(1), dotList.get(2), dotList.get(3));
     }
 
@@ -62,25 +60,24 @@ public class TetrahedronService implements ShapeService {
     }
 
     private boolean isValidX(Dot dot1, Dot dot2, Dot dot3, Dot apexDot) {
-        return isPublic(dot1.getX(), dot2.getX(), dot3.getX(), apexDot.getX())
-                && (isPrivate(dot1.getY(), dot2.getY(), dot3.getY()) || isPrivate(dot1.getZ(), dot2.getZ(), dot3.getZ()));
+        Triangular triangular = new Triangular(dot1, dot2, dot3);
+        return triangular.isBasedOnYZ() && dot1.getX() != apexDot.getX()
+                && (areNotCross(dot1.getY(), dot2.getY(), dot3.getY()) || areNotCross(dot1.getZ(), dot2.getZ(), dot3.getZ()));
     }
 
-    private boolean isValidY(Dot dot1, Dot dot2, Dot dot3, Dot apexPoint) {
-        return isPublic(dot1.getY(), dot2.getY(), dot3.getY(), apexPoint.getY())
-                && (isPrivate(dot1.getX(), dot2.getX(), dot3.getX()) || isPrivate(dot1.getZ(), dot2.getZ(), dot3.getZ()));
+    private boolean isValidY(Dot dot1, Dot dot2, Dot dot3, Dot apexDot) {
+        Triangular triangular = new Triangular(dot1, dot2, dot3);
+        return triangular.isBasedOnXZ() && dot1.getY() != apexDot.getY()
+                && (areNotCross(dot1.getX(), dot2.getX(), dot3.getX()) || areNotCross(dot1.getZ(), dot2.getZ(), dot3.getZ()));
     }
 
-    private boolean isValidZ(Dot dot1, Dot dot2, Dot dot3, Dot apexPoint) {
-        return isPublic(dot1.getZ(), dot2.getZ(), dot3.getZ(), apexPoint.getZ())
-                && (isPrivate(dot1.getY(), dot2.getY(), dot3.getY())  || isPrivate(dot1.getX(), dot2.getX(), dot3.getX()));
+    private boolean isValidZ(Dot dot1, Dot dot2, Dot dot3, Dot apexDot) {
+        Triangular triangular = new Triangular(dot1, dot2, dot3);
+        return triangular.isBasedOnXY() && dot1.getZ() != apexDot.getZ()
+                && (areNotCross(dot1.getY(), dot2.getY(), dot3.getY()) || areNotCross(dot1.getX(), dot2.getX(), dot3.getX()));
     }
 
-    private boolean isPublic(double coordinate1, double coordinate2, double coordinate3, double apexCoordinate) {
-        return coordinate1 == coordinate2 && coordinate2 == coordinate3 && coordinate1 != apexCoordinate;
-    }
-
-    private boolean isPrivate(double coordinate1, double coordinate2, double coordinate3) {
+    private boolean areNotCross(double coordinate1, double coordinate2, double coordinate3) {
         return coordinate1 == coordinate2 && coordinate2 != coordinate3
                 || coordinate1 == coordinate3 && coordinate1 != coordinate2
                 || coordinate2 == coordinate3 && coordinate2 != coordinate1;
@@ -152,6 +149,15 @@ public class TetrahedronService implements ShapeService {
             return this.dot1.getY() == this.dot2.getY() && this.dot2.getY() == this.dot3.getY();
         }
 
+        double calculateFaceArea() {
+            double edge1 = distanceBetweenDots(dot1, dot2);
+            double edge2 = distanceBetweenDots(dot2, dot3);
+            double edge3 = distanceBetweenDots(dot3, dot1);
+            double p = (edge1 + edge2 + edge3) / 2;
+
+            return Math.sqrt(p * (p - edge1) * (p - edge2) * (p - edge3));
+        }
+
     }
 
     /**
@@ -174,54 +180,38 @@ public class TetrahedronService implements ShapeService {
         return asList(triangular1, triangular2, triangular3, triangular4);
     }
 
-    private double calculateBaseArea(Tetrahedron tetrahedron) {
-        double area = calculateFaceArea(tetrahedron.getBaseDot1(), tetrahedron.getBaseDot2(), tetrahedron.getBaseDot3());
-        LOGGER.info("Base area of tetrahedron with id=" + tetrahedron.getId() + " : " + area);
-
-        return area;
-    }
-
-    private double distanceBetweenPoints(Dot a, Dot b) {
-        double x = a.getX() - b.getX();
-        double y = a.getY() - b.getY();
-        double z = a.getZ() - b.getZ();
-
-        return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
-    }
-
-    private double calculateFaceArea(Dot point1, Dot point2, Dot point3) {
-        double edge1 = distanceBetweenPoints(point1, point2);
-        double edge2 = distanceBetweenPoints(point2, point3);
-        double edge3 = distanceBetweenPoints(point3, point1);
-        double p = (edge1 + edge2 + edge3) / 2;
-
-        return Math.sqrt(p * (p - edge1) * (p - edge2) * (p - edge3));
+    private double distanceBetweenDots(Dot a, Dot b) {
+        double sum = Math.pow(a.getX() - b.getX(), 2)
+                + Math.pow(a.getY() - b.getY(), 2)
+                + Math.pow(a.getZ() - b.getZ(), 2);
+        return Math.sqrt(sum);
     }
 
     private double calculateHeight(Tetrahedron tetrahedron) {
-        Dot apex = tetrahedron.getApex();
+        Dot tetrahedronApex = tetrahedron.getApex();
         Dot baseDot1 = tetrahedron.getBaseDot1();
         Dot baseDot2 = tetrahedron.getBaseDot2();
         Dot baseDot3 = tetrahedron.getBaseDot3();
 
         double height = 0;
-        if (baseDot1.getX() == baseDot2.getX() && baseDot2.getX() == baseDot3.getX()) {
-            height = Math.abs(apex.getX() - baseDot1.getX());
-        }
-        if (baseDot1.getY() == baseDot2.getY() && baseDot2.getY() == baseDot3.getY()) {
-            height = Math.abs(apex.getY() - baseDot1.getY());
-        }
-        if (baseDot1.getZ() == baseDot2.getZ() && baseDot2.getZ() == baseDot3.getZ()) {
-            height = Math.abs(apex.getZ() - baseDot1.getZ());
+        Triangular baseTriangular = new Triangular(baseDot1, baseDot2, baseDot3);
+        if (baseTriangular.isBasedOnYZ()) {
+            height = Math.abs(tetrahedronApex.getX() - baseDot1.getX());
+        } else if (baseTriangular.isBasedOnXZ()) {
+            height = Math.abs(tetrahedronApex.getY() - baseDot1.getY());
+        } else if (baseTriangular.isBasedOnXY()) {
+            height = Math.abs(tetrahedronApex.getZ() - baseDot1.getZ());
         }
 
-        LOGGER.info("Height of tetrahedron with id=" + tetrahedron.getId() + " : " + height);
+        LOGGER.info("Height of tetrahedron is equal to: " + height);
         return height;
     }
 
     private Tetrahedron convertShape(Shape shape) throws CustomException {
         if (!isTetrahedron(shape.getDots())) {
-            throw new CustomException("Shape is not tetrahedron!");
+            String errorMsg = "Shape is not tetrahedron!";
+            LOGGER.error(errorMsg);
+            throw new CustomException(errorMsg);
         }
 
         return (Tetrahedron) shape;

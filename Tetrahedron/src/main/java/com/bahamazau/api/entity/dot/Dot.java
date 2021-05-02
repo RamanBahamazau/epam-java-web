@@ -42,9 +42,9 @@ public class Dot {
     @Override
     public String toString() {
         return new StringBuilder()
-                .append("x = ").append(x).append(",")
-                .append(" y = ").append(y).append(",")
-                .append(" z = ").append(z).append(".")
+                .append("x = ").append(x).append(";")
+                .append(" y = ").append(y).append(";")
+                .append(" z = ").append(z).append(";")
                 .toString();
     }
 

@@ -10,7 +10,6 @@ import java.util.List;
 
 public class TetrahedronPointsParser {
 
-    private static final Logger LOGGER = LogManager.getLogger();
     private final DotFactory pointFactory = new DotFactory();
 
     private final TetrahedronPointsParserValidator validator = new TetrahedronPointsParserValidator();
@@ -18,8 +17,6 @@ public class TetrahedronPointsParser {
     private static final String REGEX_FOR_SPLIT = "\\s+";
 
     public List<Dot> parseDots(String line) {
-        LOGGER.info("Method to parse data from file start");
-
         List<Dot> dots = new ArrayList<>();
         if (validator.isLineValid(line)) {
             String[] pointsLine = line.split(REGEX_FOR_SPLIT);
@@ -27,7 +24,7 @@ public class TetrahedronPointsParser {
                 double x = Double.parseDouble(pointsLine[i]);
                 double y = Double.parseDouble(pointsLine[i + 1]);
                 double z = Double.parseDouble(pointsLine[i + 2]);
-                Dot point = pointFactory.createPoint(x, y, z);
+                Dot point = pointFactory.createDot(x, y, z);
                 dots.add(point);
             }
         }

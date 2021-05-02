@@ -4,7 +4,7 @@ import com.bahamazau.impl.exception.CustomException;
 
 import java.util.List;
 
-public interface TetrahedronRepository {
+public interface ShapeRepository {
 
     List<String> readDataFromFile(String path) throws CustomException;
 

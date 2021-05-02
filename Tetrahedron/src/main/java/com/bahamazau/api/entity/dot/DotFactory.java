@@ -7,12 +7,11 @@ public class DotFactory {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public Dot createPoint(double x, double y, double z) {
-        LOGGER.info("Method to create point start");
-        Dot point = new Dot(x, y, z);
-        LOGGER.info("Point created");
+    public Dot createDot(double x, double y, double z) {
+        Dot dot = new Dot(x, y, z);
 
-        return point;
+        LOGGER.info("Dot has created: " + dot);
+        return dot;
     }
 
 }
