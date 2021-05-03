@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
-public class TetrahedronMain {
+public class ShapesMain {
 
     private static final Logger LOGGER = LogManager.getLogger();
     private static final TetrahedronRepository TETRAHEDRON_REPOSITORY_SINGLETON = TetrahedronRepository.getInstance();
