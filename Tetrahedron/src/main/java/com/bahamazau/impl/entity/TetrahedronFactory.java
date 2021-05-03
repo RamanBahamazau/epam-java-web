@@ -14,17 +14,14 @@ public class TetrahedronFactory {
     private final TetrahedronService validator = new TetrahedronService();
 
     public Optional<Tetrahedron> createTetrahedron(long id, List<Dot> dots) {
-        LOGGER.info("Method to create tetrahedron start");
-
         if (validator.isTetrahedron(dots)) {
             Tetrahedron tetrahedron = new Tetrahedron(id, dots);
 
-            LOGGER.info("Tetrahedron with id = " + id + " added to repository");
+            LOGGER.info("Tetrahedron[" + id + "] has been added added to repository");
             return Optional.of(tetrahedron);
         } else {
-            LOGGER.info("The figure with id = " + id + " is not a tetrahedron");
+            LOGGER.warn("The shape[" + id + "] is not a tetrahedron");
         }
-        LOGGER.info("Tetrahedron created");
 
         return Optional.empty();
     }

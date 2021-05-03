@@ -1,19 +1,19 @@
-package com.bahamazau.impl;
+package com.bahamazau.impl.repository;
 
 import com.bahamazau.impl.entity.Tetrahedron;
 
 import java.util.ArrayList;
 
-public class TetrahedronContainer {
+public class TetrahedronRepository {
 
     private final ArrayList<Tetrahedron> tetrahedrons = new ArrayList<>();
     private long lastId = 0;
 
-    private static TetrahedronContainer instance;
+    private static TetrahedronRepository instance;
 
-    public static TetrahedronContainer getInstance() {
+    public static TetrahedronRepository getInstance() {
         if (instance == null) {
-            instance = new TetrahedronContainer();
+            instance = new TetrahedronRepository();
         }
 
         return instance;

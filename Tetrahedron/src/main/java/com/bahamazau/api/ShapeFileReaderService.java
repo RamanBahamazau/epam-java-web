@@ -4,7 +4,7 @@ import com.bahamazau.impl.exception.CustomException;
 
 import java.util.List;
 
-public interface ShapeRepository {
+public interface ShapeFileReaderService {
 
     List<String> readDataFromFile(String path) throws CustomException;
 

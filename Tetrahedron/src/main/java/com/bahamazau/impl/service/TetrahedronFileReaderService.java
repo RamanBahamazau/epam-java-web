@@ -1,7 +1,7 @@
-package com.bahamazau.impl.repository;
+package com.bahamazau.impl.service;
 
 import com.bahamazau.impl.exception.CustomException;
-import com.bahamazau.api.ShapeRepository;
+import com.bahamazau.api.ShapeFileReaderService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class TetrahedronRepository implements ShapeRepository {
+public class TetrahedronFileReaderService implements ShapeFileReaderService {
 
     private final static Logger LOGGER = LogManager.getLogger();
 

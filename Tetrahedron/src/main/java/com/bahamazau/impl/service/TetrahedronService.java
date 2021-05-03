@@ -12,9 +12,6 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
-/**
- * TODO: transform methods for irregular tetrahedrons.
- */
 public class TetrahedronService implements ShapeService {
 
     private static final Logger LOGGER = LogManager.getLogger();
@@ -32,6 +29,9 @@ public class TetrahedronService implements ShapeService {
         return surfaceArea;
     }
 
+    /**
+     * TODO: transform methods for irregular tetrahedrons.
+     */
     @Override
     public double calculateVolume(Shape shape) throws CustomException {
         Tetrahedron tetrahedron = convertShape(shape);
@@ -46,6 +46,9 @@ public class TetrahedronService implements ShapeService {
         return volume;
     }
 
+    /**
+     * TODO: transform methods for irregular tetrahedrons.
+     */
     public boolean isTetrahedron(List<Dot> dotList) {
         return (distanceBetweenDots(dotList.get(1), dotList.get(2)) != 0
                     && distanceBetweenDots(dotList.get(2), dotList.get(3)) != 0
@@ -150,12 +153,12 @@ public class TetrahedronService implements ShapeService {
         }
 
         double calculateFaceArea() {
-            double edge1 = distanceBetweenDots(dot1, dot2);
-            double edge2 = distanceBetweenDots(dot2, dot3);
-            double edge3 = distanceBetweenDots(dot3, dot1);
-            double p = (edge1 + edge2 + edge3) / 2;
+            double side12 = distanceBetweenDots(dot1, dot2);
+            double side23 = distanceBetweenDots(dot2, dot3);
+            double side31 = distanceBetweenDots(dot3, dot1);
+            double halfPerimeter = (side12 + side23 + side31) / 2;
 
-            return Math.sqrt(p * (p - edge1) * (p - edge2) * (p - edge3));
+            return Math.sqrt(halfPerimeter * (halfPerimeter - side12) * (halfPerimeter - side23) * (halfPerimeter - side31));
         }
 
     }
@@ -163,7 +166,7 @@ public class TetrahedronService implements ShapeService {
     /**
      * Convert tetrahedron on list of triangles.
      *
-     * @param tetrahedron
+     * @param tetrahedron valid shape
      * @return list surface of tetrahedron
      */
     private List<Triangular> triangleList(Tetrahedron tetrahedron) {
