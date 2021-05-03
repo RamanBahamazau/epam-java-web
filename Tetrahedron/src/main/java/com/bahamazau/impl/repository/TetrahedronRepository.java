@@ -1,42 +1,42 @@
-package com.bahamazau.impl.repository;
+package com.bahamazau.impl;
 
-import com.bahamazau.impl.exception.CustomException;
-import com.bahamazau.api.ShapeRepository;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.bahamazau.impl.entity.Tetrahedron;
 
-import java.io.File;
-import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class TetrahedronRepository implements ShapeRepository {
+public class TetrahedronContainer {
 
-    private final static Logger LOGGER = LogManager.getLogger();
+    private final ArrayList<Tetrahedron> tetrahedrons = new ArrayList<>();
+    private long lastId = 0;
 
-    @Override
-    public List<String> readDataFromFile(String path) throws CustomException {
-        validateFilePath(path);
-        File file = new File(path);
+    private static TetrahedronContainer instance;
 
-        List<String> dataFromFile = new ArrayList<>();
-        try (Stream<String> linesStream = Files.lines(file.toPath())) {
-            linesStream.forEach(dataFromFile::add);
-        } catch (Exception e) {
-            throw new CustomException("File is not found", e);
+    public static TetrahedronContainer getInstance() {
+        if (instance == null) {
+            instance = new TetrahedronContainer();
         }
 
-        return dataFromFile;
+        return instance;
     }
 
-    public void validateFilePath(String path) throws CustomException {
-        if(path == null || path.isEmpty()) {
-            String message = String.format("File path '%s' is empty", path);
+    public void add(Tetrahedron tetrahedron){
+        tetrahedrons.add(tetrahedron);
+    }
 
-            LOGGER.error(message);
-            throw new CustomException(message);
-        }
+    public void remove(Tetrahedron tetrahedron){
+        tetrahedrons.remove(tetrahedron);
+    }
+
+    public Tetrahedron getTetrahedron(int index){
+        return tetrahedrons.get(index);
+    }
+
+    public ArrayList<Tetrahedron> getTetrahedrons(){
+        return tetrahedrons;
+    }
+
+    public long nextId() {
+        return lastId++;
     }
 
 }
