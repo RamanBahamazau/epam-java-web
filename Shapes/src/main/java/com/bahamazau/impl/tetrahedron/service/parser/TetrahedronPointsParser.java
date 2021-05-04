@@ -8,11 +8,10 @@ import java.util.List;
 
 public class TetrahedronPointsParser {
 
-    private final DotFactory pointFactory = new DotFactory();
-
-    private final TetrahedronPointsParserValidator validator = new TetrahedronPointsParserValidator();
-
     private static final String REGEX_FOR_SPLIT = "\\s+";
+
+    private final DotFactory pointFactory = new DotFactory();
+    private final TetrahedronPointsParserValidator validator = new TetrahedronPointsParserValidator();
 
     public List<Dot> parseDots(String line) {
         List<Dot> dots = new ArrayList<>();

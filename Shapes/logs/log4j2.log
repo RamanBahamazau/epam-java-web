@@ -311,3 +311,15 @@
 2021-05-04 15:56:02,140 ERROR c.b.i.t.s.TetrahedronFileReaderService [main] File path 'null' is empty
 2021-05-04 15:58:33,248 ERROR c.b.i.t.s.TetrahedronFileReaderService [main] File path is empty
 2021-05-04 15:58:33,256 ERROR c.b.i.t.s.TetrahedronFileReaderService [main] File path is empty
+2021-05-04 16:15:14,224 INFO c.b.a.e.d.DotFactory [main] Dot has created: x = 0.5; y = 0.288; z = 0.816;
+2021-05-04 16:15:14,229 INFO c.b.a.e.d.DotFactory [main] Dot has created: x = 0.0; y = 0.0; z = 0.0;
+2021-05-04 16:15:14,229 INFO c.b.a.e.d.DotFactory [main] Dot has created: x = 1.0; y = 0.0; z = 0.0;
+2021-05-04 16:15:14,229 INFO c.b.a.e.d.DotFactory [main] Dot has created: x = 0.5; y = 0.866; z = 0.0;
+2021-05-04 16:16:00,675 INFO c.b.a.e.d.DotFactory [main] Dot has created: x = 0.5; y = 0.288; z = 0.816;
+2021-05-04 16:16:00,679 INFO c.b.a.e.d.DotFactory [main] Dot has created: x = 0.0; y = 0.0; z = 0.0;
+2021-05-04 16:16:00,680 INFO c.b.a.e.d.DotFactory [main] Dot has created: x = 1.0; y = 0.0; z = 0.0;
+2021-05-04 16:16:00,680 INFO c.b.a.e.d.DotFactory [main] Dot has created: x = 0.5; y = 0.866; z = 0.0;
+2021-05-04 16:16:27,584 INFO c.b.a.e.d.DotFactory [main] Dot has created: x = 0.5; y = 0.288; z = 0.816;
+2021-05-04 16:16:27,590 INFO c.b.a.e.d.DotFactory [main] Dot has created: x = 0.0; y = 0.0; z = 0.0;
+2021-05-04 16:16:27,590 INFO c.b.a.e.d.DotFactory [main] Dot has created: x = 1.0; y = 0.0; z = 0.0;
+2021-05-04 16:16:27,590 INFO c.b.a.e.d.DotFactory [main] Dot has created: x = 0.5; y = 0.866; z = 0.0;
