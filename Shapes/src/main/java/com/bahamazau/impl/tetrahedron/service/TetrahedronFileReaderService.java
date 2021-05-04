@@ -13,6 +13,9 @@ import java.util.stream.Stream;
 
 public class TetrahedronFileReaderService implements ShapeFileReaderService {
 
+    static final String FILE_NOT_FOUND_MSG = "File is not found";
+    static final String FILE_PATH_IS_EMPTY_MSG = "File path is empty";
+
     private final static Logger LOGGER = LogManager.getLogger();
 
     @Override
@@ -24,18 +27,16 @@ public class TetrahedronFileReaderService implements ShapeFileReaderService {
         try (Stream<String> linesStream = Files.lines(file.toPath())) {
             linesStream.forEach(dataFromFile::add);
         } catch (Exception e) {
-            throw new CustomException("File is not found", e);
+            throw new CustomException(FILE_NOT_FOUND_MSG, e);
         }
 
         return dataFromFile;
     }
 
-    public void validateFilePath(String path) throws CustomException {
-        if(path == null || path.isEmpty()) {
-            String message = String.format("File path '%s' is empty", path);
-
-            LOGGER.error(message);
-            throw new CustomException(message);
+    public void validateFilePath(String filePath) throws CustomException {
+        if(filePath == null || filePath.isEmpty()) {
+            LOGGER.error(FILE_PATH_IS_EMPTY_MSG);
+            throw new CustomException(FILE_PATH_IS_EMPTY_MSG);
         }
     }
 

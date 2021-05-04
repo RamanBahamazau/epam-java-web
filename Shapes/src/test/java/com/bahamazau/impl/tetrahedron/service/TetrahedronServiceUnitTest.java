@@ -8,6 +8,8 @@ public class TetrahedronServiceUnitTest {
 
     @Test
     public void should_when_given() {
-
+        // given
+        // when
+        // then
     }
 }

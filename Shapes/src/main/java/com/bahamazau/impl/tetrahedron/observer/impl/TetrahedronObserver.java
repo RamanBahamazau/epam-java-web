@@ -10,17 +10,19 @@ import com.bahamazau.impl.tetrahedron.warehouse.TetrahedronWarehouse;
 
 public class TetrahedronObserver implements Observer {
 
+    private final ShapeService service = new TetrahedronService();
+    private final TetrahedronWarehouse warehouse = TetrahedronWarehouse.getInstance();
+
     @Override
     public void changeParameters(TetrahedronEvent event) {
         Shape tetrahedron = event.getSource();
-        ShapeService service = new TetrahedronService();
-        TetrahedronWarehouse warehouse = TetrahedronWarehouse.getInstance();
 
         try {
-            double volume = service.calculateVolume(tetrahedron);
             double surfaceArea = service.calculateSurfaceArea(tetrahedron);
+            double volume = service.calculateVolume(tetrahedron);
+            double perimeter = service.calculatePerimeter(tetrahedron);
 
-            warehouse.putParameter(tetrahedron.getId(), surfaceArea, volume);
+            warehouse.putParameter(tetrahedron.getId(), surfaceArea, volume, perimeter);
         } catch (CustomException e) {
             e.printStackTrace();
         }

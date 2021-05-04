@@ -86,10 +86,10 @@ public class Tetrahedron extends Shape implements Observable {
     public String toString() {
         return new StringBuilder("Tetrahedron {\n")
                 .append(" ID: ").append(id).append('\n')
-                .append(" Dot 1: ").append(getApex()).append('\n')
-                .append(" Dot 2: ").append(getBaseDot1()).append('\n')
-                .append(" Dot 3: ").append(getBaseDot2()).append('\n')
-                .append(" Dot 4: ").append(getBaseDot3()).append('\n')
+                .append(" Apex Dot: ").append(getApex()).append('\n')
+                .append(" Base Dot 1: ").append(getBaseDot1()).append('\n')
+                .append(" Base Dot 2: ").append(getBaseDot2()).append('\n')
+                .append(" Base Dot 3: ").append(getBaseDot3()).append('\n')
                 .append("}")
                 .toString();
     }

@@ -46,44 +46,21 @@ public class TetrahedronService implements ShapeService {
         return volume;
     }
 
-    /**
-     * TODO: transform methods for irregular tetrahedrons.
-     */
-    public boolean isTetrahedron(List<Dot> dotList) {
-        return (distanceBetweenDots(dotList.get(1), dotList.get(2)) != 0
-                    && distanceBetweenDots(dotList.get(2), dotList.get(3)) != 0
-                    && distanceBetweenDots(dotList.get(3), dotList.get(1)) != 0)
-                && isValid(dotList.get(0), dotList.get(1), dotList.get(2), dotList.get(3));
-    }
+    @Override
+    public double calculatePerimeter(Shape shape) throws CustomException {
+        Tetrahedron tetrahedron = convertShape(shape);
 
-    private boolean isValid(Dot apexDot, Dot baseDot1, Dot baseDot2, Dot baseDot3) {
-        return isValidX(baseDot1, baseDot2, baseDot3, apexDot)
-                || isValidY(baseDot1, baseDot2, baseDot3, apexDot)
-                || isValidZ(baseDot1, baseDot2, baseDot3, apexDot);
-    }
+        double perimeter = 0;
+        List<Dot> dotList = tetrahedron.getDots();
+        for (int i = 0; i < dotList.size() - 1; i++) {
+            Dot dot = dotList.get(i);
+            for (int j = i + 1; j < dotList.size(); j++) {
+                perimeter = calculateEdge(dot, dotList.get(j));
+            }
+        }
 
-    private boolean isValidX(Dot dot1, Dot dot2, Dot dot3, Dot apexDot) {
-        Triangular triangular = new Triangular(dot1, dot2, dot3);
-        return triangular.isBasedOnYZ() && dot1.getX() != apexDot.getX()
-                && (areNotCross(dot1.getY(), dot2.getY(), dot3.getY()) || areNotCross(dot1.getZ(), dot2.getZ(), dot3.getZ()));
-    }
-
-    private boolean isValidY(Dot dot1, Dot dot2, Dot dot3, Dot apexDot) {
-        Triangular triangular = new Triangular(dot1, dot2, dot3);
-        return triangular.isBasedOnXZ() && dot1.getY() != apexDot.getY()
-                && (areNotCross(dot1.getX(), dot2.getX(), dot3.getX()) || areNotCross(dot1.getZ(), dot2.getZ(), dot3.getZ()));
-    }
-
-    private boolean isValidZ(Dot dot1, Dot dot2, Dot dot3, Dot apexDot) {
-        Triangular triangular = new Triangular(dot1, dot2, dot3);
-        return triangular.isBasedOnXY() && dot1.getZ() != apexDot.getZ()
-                && (areNotCross(dot1.getY(), dot2.getY(), dot3.getY()) || areNotCross(dot1.getX(), dot2.getX(), dot3.getX()));
-    }
-
-    private boolean areNotCross(double coordinate1, double coordinate2, double coordinate3) {
-        return coordinate1 == coordinate2 && coordinate2 != coordinate3
-                || coordinate1 == coordinate3 && coordinate1 != coordinate2
-                || coordinate2 == coordinate3 && coordinate2 != coordinate1;
+        LOGGER.info("Perimeter of tetrahedron is equal to: " + perimeter);
+        return perimeter;
     }
 
     @Override
@@ -128,6 +105,59 @@ public class TetrahedronService implements ShapeService {
         return isBasedOnXY;
     }
 
+    /**
+     * TODO: transform methods for irregular tetrahedrons.
+     */
+    @Override
+    public boolean isShape(Shape shape) {
+        return isTetrahedron(shape.getDots());
+    }
+
+    public boolean isTetrahedron(List<Dot> dotList) {
+        boolean areDotsEqual = true;
+        for (int i = 0; i < dotList.size() - 1; i++) {
+            Dot dot = dotList.get(i);
+            for (int j = i + 1; j < dotList.size(); j++) {
+                areDotsEqual = dot.equals(dotList.get(j));
+                if (areDotsEqual) break;
+            }
+
+            if (areDotsEqual) break;
+        }
+
+        return !areDotsEqual && isValid(dotList.get(0), dotList.get(1), dotList.get(2), dotList.get(3));
+    }
+
+    private boolean isValid(Dot apexDot, Dot baseDot1, Dot baseDot2, Dot baseDot3) {
+        return isValidX(baseDot1, baseDot2, baseDot3, apexDot)
+                || isValidY(baseDot1, baseDot2, baseDot3, apexDot)
+                || isValidZ(baseDot1, baseDot2, baseDot3, apexDot);
+    }
+
+    private boolean isValidX(Dot dot1, Dot dot2, Dot dot3, Dot apexDot) {
+        Triangular triangular = new Triangular(dot1, dot2, dot3);
+        return triangular.isBasedOnYZ() && dot1.getX() != apexDot.getX()
+                && (areNotCross(dot1.getY(), dot2.getY(), dot3.getY()) || areNotCross(dot1.getZ(), dot2.getZ(), dot3.getZ()));
+    }
+
+    private boolean isValidY(Dot dot1, Dot dot2, Dot dot3, Dot apexDot) {
+        Triangular triangular = new Triangular(dot1, dot2, dot3);
+        return triangular.isBasedOnXZ() && dot1.getY() != apexDot.getY()
+                && (areNotCross(dot1.getX(), dot2.getX(), dot3.getX()) || areNotCross(dot1.getZ(), dot2.getZ(), dot3.getZ()));
+    }
+
+    private boolean isValidZ(Dot dot1, Dot dot2, Dot dot3, Dot apexDot) {
+        Triangular triangular = new Triangular(dot1, dot2, dot3);
+        return triangular.isBasedOnXY() && dot1.getZ() != apexDot.getZ()
+                && (areNotCross(dot1.getY(), dot2.getY(), dot3.getY()) || areNotCross(dot1.getX(), dot2.getX(), dot3.getX()));
+    }
+
+    private boolean areNotCross(double coordinate1, double coordinate2, double coordinate3) {
+        return coordinate1 == coordinate2 && coordinate2 != coordinate3
+                || coordinate1 == coordinate3 && coordinate1 != coordinate2
+                || coordinate2 == coordinate3 && coordinate2 != coordinate1;
+    }
+
     private class Triangular {
 
         private final Dot dot1;
@@ -153,9 +183,9 @@ public class TetrahedronService implements ShapeService {
         }
 
         double calculateFaceArea() {
-            double side12 = distanceBetweenDots(dot1, dot2);
-            double side23 = distanceBetweenDots(dot2, dot3);
-            double side31 = distanceBetweenDots(dot3, dot1);
+            double side12 = calculateEdge(dot1, dot2);
+            double side23 = calculateEdge(dot2, dot3);
+            double side31 = calculateEdge(dot3, dot1);
             double halfPerimeter = (side12 + side23 + side31) / 2;
 
             return Math.sqrt(halfPerimeter * (halfPerimeter - side12) * (halfPerimeter - side23) * (halfPerimeter - side31));
@@ -183,7 +213,7 @@ public class TetrahedronService implements ShapeService {
         return asList(triangular1, triangular2, triangular3, triangular4);
     }
 
-    private double distanceBetweenDots(Dot a, Dot b) {
+    private double calculateEdge(Dot a, Dot b) {
         double sum = Math.pow(a.getX() - b.getX(), 2)
                 + Math.pow(a.getY() - b.getY(), 2)
                 + Math.pow(a.getZ() - b.getZ(), 2);
@@ -211,7 +241,7 @@ public class TetrahedronService implements ShapeService {
     }
 
     private Tetrahedron convertShape(Shape shape) throws CustomException {
-        if (!isTetrahedron(shape.getDots())) {
+        if (!isShape(shape)) {
             String errorMsg = "Shape is not tetrahedron!";
             LOGGER.error(errorMsg);
             throw new CustomException(errorMsg);

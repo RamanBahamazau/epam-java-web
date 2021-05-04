@@ -7,7 +7,7 @@ import java.util.Map;
 public class TetrahedronWarehouse {
 
     private static TetrahedronWarehouse instance;
-    private Map<Long, TetrahedronParameter> parametersMap = new HashMap<>();
+    private final Map<Long, TetrahedronParameter> parametersMap = new HashMap<>();
 
     public static TetrahedronWarehouse getInstance() {
         if(instance == null) {
@@ -21,8 +21,8 @@ public class TetrahedronWarehouse {
         return parametersMap.get(key);
     }
 
-    public void putParameter(long key, double surfaceArea, double volume) {
-        TetrahedronParameter parameter = new TetrahedronParameter(surfaceArea,volume);
+    public void putParameter(long key, double surfaceArea, double volume, double perimeter) {
+        TetrahedronParameter parameter = new TetrahedronParameter(surfaceArea, volume, perimeter);
         parametersMap.put(key, parameter);
     }
 

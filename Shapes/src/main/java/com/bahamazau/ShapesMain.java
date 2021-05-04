@@ -16,11 +16,10 @@ public class ShapesMain {
     private static final Logger LOGGER = LogManager.getLogger();
     private static final TetrahedronRepository TETRAHEDRON_REPOSITORY_SINGLETON = TetrahedronRepository.getInstance();
     private static final TetrahedronFactory tetrahedronFactory = new TetrahedronFactory();
+    private static final TetrahedronFileReaderService dataReader = new TetrahedronFileReaderService();
+    private static final TetrahedronPointsParser tetrahedronPointsParser = new TetrahedronPointsParser();
 
     public static void main(String[] args) {
-        TetrahedronFileReaderService dataReader = new TetrahedronFileReaderService();
-        TetrahedronPointsParser tetrahedronPointsParser = new TetrahedronPointsParser();
-
         try {
             List<String> dataFromFile = dataReader.readDataFromFile("./src/main/resources/data/data.txt");
 
