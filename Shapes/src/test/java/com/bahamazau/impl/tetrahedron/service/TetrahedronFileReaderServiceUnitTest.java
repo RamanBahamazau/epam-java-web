@@ -1,6 +1,6 @@
 package com.bahamazau.impl.tetrahedron.service;
 
-import com.bahamazau.impl.tetrahedron.exception.CustomException;
+import com.bahamazau.api.exception.ShapeException;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -15,7 +15,7 @@ public class TetrahedronFileReaderServiceUnitTest {
     private static final TetrahedronFileReaderService dataReader = new TetrahedronFileReaderService();
 
     @Test
-    public void shouldReturnListStringFromFile_whenReadDataFromFile_givenExistingFile() throws CustomException {
+    public void shouldReturnListStringFromFile_whenReadDataFromFile_givenExistingFile() throws ShapeException {
         // given
         final String filePath = "./src/main/resources/data/data.txt";
 
@@ -47,7 +47,7 @@ public class TetrahedronFileReaderServiceUnitTest {
         String actualErrorMsg = null;
         try {
             dataReader.readDataFromFile(filePath);
-        } catch (CustomException actual) {
+        } catch (ShapeException actual) {
             actualErrorMsg = actual.getMessage();
         }
         // then
@@ -64,7 +64,7 @@ public class TetrahedronFileReaderServiceUnitTest {
         String actualErrorMsg = null;
         try {
             dataReader.readDataFromFile(filePath);
-        } catch (CustomException actual) {
+        } catch (ShapeException actual) {
             actualErrorMsg = actual.getMessage();
         }
         // then
@@ -81,7 +81,7 @@ public class TetrahedronFileReaderServiceUnitTest {
         String actualErrorMsg = null;
         try {
             dataReader.readDataFromFile(filePath);
-        } catch (CustomException actual) {
+        } catch (ShapeException actual) {
             actualErrorMsg = actual.getMessage();
         }
         // then

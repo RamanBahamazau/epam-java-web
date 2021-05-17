@@ -1,7 +1,6 @@
 package com.bahamazau.impl.tetrahedron.service.parser;
 
 import com.bahamazau.api.entity.dot.Dot;
-import com.bahamazau.impl.tetrahedron.exception.CustomException;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ public class TetrahedronPointsParserUnitTest {
     private final TetrahedronPointsParser parser = new TetrahedronPointsParser();
 
     @Test
-    public void shouldReturnListStringFromFile_whenReadDataFromFile_givenExistingFile() throws CustomException {
+    public void shouldReturnListDot_whenReadDataFromFile_givenNotEmptyString() {
         // given
         final String inputLine = "0.5 0.288 0.816 0 0 0 1 0 0 0.5 0.866 0";
 
@@ -41,6 +40,16 @@ public class TetrahedronPointsParserUnitTest {
             double expectedZ = expected.get(i)[2];
             assertEquals(actualZ, expectedZ, 0);
         }
+    }
+
+    @Test
+    public void shouldReturnEmptyList_whenReadDataFromFile_givenNotValidStringWithElevenPoints() {
+        // given
+        final String inputLine = "0.5 0.288 0.816 0 0 0 1 0 0 0.5 0.866";
+        // when
+        List<Dot> actual = parser.parseDots(inputLine);
+        // then
+        assertEquals(actual, new ArrayList<>());
     }
 
 }

@@ -1,10 +1,12 @@
 package com.bahamazau.impl.tetrahedron.entity;
 
-import com.bahamazau.api.Observable;
-import com.bahamazau.api.Observer;
+import com.bahamazau.api.observer.ShapeObservable;
+import com.bahamazau.api.observer.ShapeObserver;
 import com.bahamazau.api.entity.Shape;
 import com.bahamazau.api.entity.dot.Dot;
 import com.bahamazau.impl.tetrahedron.observer.TetrahedronEvent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +15,12 @@ import java.util.Objects;
 /**
  * Entity of shape "Tetrahedron". Contain id and 4 dots: apex and 3 base dots.
  */
-public class Tetrahedron extends Shape implements Observable {
+public class Tetrahedron extends Shape implements ShapeObservable {
 
-    private ArrayList<Observer> observers = new ArrayList<>();
+    private static final Logger LOGGER = LogManager.getLogger();
+    private final ArrayList<ShapeObserver> shapeObserverList = new ArrayList<>();
 
-    Tetrahedron(Long id, List<Dot> dots) {
+    public Tetrahedron(Long id, List<Dot> dots) {
         this.id = id;
         this.dots = dots;
     }
@@ -72,14 +75,14 @@ public class Tetrahedron extends Shape implements Observable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Tetrahedron that = (Tetrahedron) o;
-        return id == that.id && observers.equals(that.observers)
+        return id == that.id && shapeObserverList.equals(that.shapeObserverList)
                 && getApex().equals(that.getApex()) && getBaseDot1().equals(that.getBaseDot1())
                 && getBaseDot2().equals(that.getBaseDot2()) && getBaseDot3().equals(that.getBaseDot3());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, getApex(), getBaseDot1(), getBaseDot2(), getBaseDot3(), observers);
+        return Objects.hash(id, getApex(), getBaseDot1(), getBaseDot2(), getBaseDot3(), shapeObserverList);
     }
 
     @Override
@@ -95,23 +98,21 @@ public class Tetrahedron extends Shape implements Observable {
     }
 
     @Override
-    public void attach(Observer observer) {
-        observers.add(observer);
+    public void attach(ShapeObserver shapeObserver) {
+        shapeObserverList.add(shapeObserver);
     }
 
     @Override
-    public void detach(Observer observer) {
-        observers.remove(observer);
+    public void detach(ShapeObserver shapeObserver) {
+        shapeObserverList.remove(shapeObserver);
     }
 
     @Override
     public void notifyObservers() {
         TetrahedronEvent event = new TetrahedronEvent(this);
-        if (!observers.isEmpty()) {
-            for (Observer observer : observers) {
-                observer.changeParameters(event);
-            }
-        }
+        shapeObserverList.forEach(shapeObserver -> shapeObserver.changeParameters(event));
+
+        LOGGER.info("Observers were triggered after update.");
     }
 
 }

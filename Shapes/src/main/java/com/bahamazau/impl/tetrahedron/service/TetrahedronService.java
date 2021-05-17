@@ -1,41 +1,36 @@
 package com.bahamazau.impl.tetrahedron.service;
 
-import com.bahamazau.api.entity.Shape;
 import com.bahamazau.api.entity.dot.Dot;
 import com.bahamazau.impl.tetrahedron.entity.Tetrahedron;
 import com.bahamazau.api.ShapeService;
-import com.bahamazau.impl.tetrahedron.exception.CustomException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
+import java.util.OptionalDouble;
 
 import static java.util.Arrays.asList;
 
-public class TetrahedronService implements ShapeService {
+public class TetrahedronService implements ShapeService<Tetrahedron> {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
-    public double calculateSurfaceArea(Shape shape) throws CustomException {
-        Tetrahedron tetrahedron = convertShape(shape);
-
+    public OptionalDouble calculateSurfaceArea(Tetrahedron tetrahedron) {
         double surfaceArea = 0;
         for (Triangular triangular: triangleList(tetrahedron)) {
             surfaceArea += triangular.calculateFaceArea();
         }
 
         LOGGER.info("Surface area of tetrahedron is equal to: " + surfaceArea);
-        return surfaceArea;
+        return OptionalDouble.of(surfaceArea);
     }
 
     /**
      * TODO: transform methods for irregular tetrahedrons.
      */
     @Override
-    public double calculateVolume(Shape shape) throws CustomException {
-        Tetrahedron tetrahedron = convertShape(shape);
-
+    public OptionalDouble calculateVolume(Tetrahedron tetrahedron) {
         Triangular baseTriangular = new Triangular(
                 tetrahedron.getBaseDot1(), tetrahedron.getBaseDot2(), tetrahedron.getBaseDot3());
         double baseArea = baseTriangular.calculateFaceArea();
@@ -43,13 +38,11 @@ public class TetrahedronService implements ShapeService {
         double volume = baseArea * height / 3;
 
         LOGGER.info("Volume of tetrahedron is equal to: " + volume);
-        return volume;
+        return OptionalDouble.of(volume);
     }
 
     @Override
-    public double calculatePerimeter(Shape shape) throws CustomException {
-        Tetrahedron tetrahedron = convertShape(shape);
-
+    public OptionalDouble calculatePerimeter(Tetrahedron tetrahedron) {
         double perimeter = 0;
         List<Dot> dotList = tetrahedron.getDots();
         for (int i = 0; i < dotList.size() - 1; i++) {
@@ -60,13 +53,11 @@ public class TetrahedronService implements ShapeService {
         }
 
         LOGGER.info("Perimeter of tetrahedron is equal to: " + perimeter);
-        return perimeter;
+        return OptionalDouble.of(perimeter);
     }
 
     @Override
-    public boolean isBasedOnYZ(Shape shape) throws CustomException {
-        Tetrahedron tetrahedron = convertShape(shape);
-
+    public boolean isBasedOnYZ(Tetrahedron tetrahedron) {
         Triangular baseTriangular = new Triangular(
                 tetrahedron.getBaseDot1(),
                 tetrahedron.getBaseDot2(),
@@ -78,9 +69,7 @@ public class TetrahedronService implements ShapeService {
     }
 
     @Override
-    public boolean isBasedOnXZ(Shape shape) throws CustomException {
-        Tetrahedron tetrahedron = convertShape(shape);
-
+    public boolean isBasedOnXZ(Tetrahedron tetrahedron) {
         Triangular baseTriangular = new Triangular(
                 tetrahedron.getBaseDot1(),
                 tetrahedron.getBaseDot2(),
@@ -92,9 +81,7 @@ public class TetrahedronService implements ShapeService {
     }
 
     @Override
-    public boolean isBasedOnXY(Shape shape) throws CustomException {
-        Tetrahedron tetrahedron = convertShape(shape);
-
+    public boolean isBasedOnXY(Tetrahedron tetrahedron) {
         Triangular baseTriangular = new Triangular(
                 tetrahedron.getBaseDot1(),
                 tetrahedron.getBaseDot2(),
@@ -108,11 +95,6 @@ public class TetrahedronService implements ShapeService {
     /**
      * TODO: transform methods for irregular tetrahedrons.
      */
-    @Override
-    public boolean isShape(Shape shape) {
-        return isTetrahedron(shape.getDots());
-    }
-
     public boolean isTetrahedron(List<Dot> dotList) {
         boolean areDotsEqual = true;
         for (int i = 0; i < dotList.size() - 1; i++) {
@@ -238,16 +220,6 @@ public class TetrahedronService implements ShapeService {
 
         LOGGER.info("Height of tetrahedron is equal to: " + height);
         return height;
-    }
-
-    private Tetrahedron convertShape(Shape shape) throws CustomException {
-        if (!isShape(shape)) {
-            String errorMsg = "Shape is not tetrahedron!";
-            LOGGER.error(errorMsg);
-            throw new CustomException(errorMsg);
-        }
-
-        return (Tetrahedron) shape;
     }
 
 }

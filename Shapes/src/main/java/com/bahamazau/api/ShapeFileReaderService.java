@@ -1,11 +1,11 @@
 package com.bahamazau.api;
 
-import com.bahamazau.impl.tetrahedron.exception.CustomException;
+import com.bahamazau.api.exception.ShapeException;
 
 import java.util.List;
 
 public interface ShapeFileReaderService {
 
-    List<String> readDataFromFile(String path) throws CustomException;
+    public List<String> readDataFromFile(String path) throws ShapeException;
 
 }

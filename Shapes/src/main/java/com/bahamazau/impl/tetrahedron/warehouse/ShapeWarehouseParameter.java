@@ -1,12 +1,12 @@
 package com.bahamazau.impl.tetrahedron.warehouse;
 
-public class TetrahedronParameter {
+public class ShapeWarehouseParameter {
 
     private double surfaceArea;
     private double volume;
     private double perimeter;
 
-    public TetrahedronParameter(double surfaceArea, double volume, double perimeter) {
+    public ShapeWarehouseParameter(double surfaceArea, double volume, double perimeter) {
         this.surfaceArea = surfaceArea;
         this.volume = volume;
         this.perimeter = perimeter;

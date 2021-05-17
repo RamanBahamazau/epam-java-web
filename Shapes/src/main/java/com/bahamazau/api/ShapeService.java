@@ -1,17 +1,15 @@
 package com.bahamazau.api;
 
-import com.bahamazau.api.entity.Shape;
-import com.bahamazau.impl.tetrahedron.exception.CustomException;
+import java.util.OptionalDouble;
 
-public interface ShapeService {
+public interface ShapeService<Shape> {
 
-    double calculateSurfaceArea(Shape shape) throws CustomException;
-    double calculateVolume(Shape shape) throws CustomException;
-    double calculatePerimeter(Shape shape) throws CustomException;
+    OptionalDouble calculateSurfaceArea(Shape shape);
+    OptionalDouble calculateVolume(Shape shape);
+    OptionalDouble calculatePerimeter(Shape shape);
 
-    boolean isShape(Shape shape);
-    boolean isBasedOnXY(Shape shape) throws CustomException;
-    boolean isBasedOnXZ(Shape shape) throws CustomException;
-    boolean isBasedOnYZ(Shape shape) throws CustomException;
+    boolean isBasedOnXY(Shape shape);
+    boolean isBasedOnXZ(Shape shape);
+    boolean isBasedOnYZ(Shape shape);
 
 }

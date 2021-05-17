@@ -2,11 +2,15 @@ package com.bahamazau.impl.tetrahedron.service.parser;
 
 import com.bahamazau.api.entity.dot.Dot;
 import com.bahamazau.api.entity.dot.DotFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TetrahedronPointsParser {
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private static final String REGEX_FOR_SPLIT = "\\s+";
 
@@ -26,6 +30,7 @@ public class TetrahedronPointsParser {
             }
         }
 
+        LOGGER.info("Text line has been parsed to dot list.");
         return dots;
     }
 

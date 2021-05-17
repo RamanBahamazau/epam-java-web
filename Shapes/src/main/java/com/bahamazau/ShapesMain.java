@@ -2,18 +2,15 @@ package com.bahamazau;
 
 import com.bahamazau.api.entity.dot.Dot;
 import com.bahamazau.impl.tetrahedron.entity.TetrahedronFactory;
-import com.bahamazau.impl.tetrahedron.exception.CustomException;
+import com.bahamazau.api.exception.ShapeException;
 import com.bahamazau.impl.tetrahedron.service.TetrahedronFileReaderService;
 import com.bahamazau.impl.tetrahedron.service.parser.TetrahedronPointsParser;
 import com.bahamazau.impl.tetrahedron.repository.TetrahedronRepository;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
 public class ShapesMain {
 
-    private static final Logger LOGGER = LogManager.getLogger();
     private static final TetrahedronRepository TETRAHEDRON_REPOSITORY_SINGLETON = TetrahedronRepository.getInstance();
     private static final TetrahedronFactory tetrahedronFactory = new TetrahedronFactory();
     private static final TetrahedronFileReaderService dataReader = new TetrahedronFileReaderService();
@@ -31,9 +28,7 @@ public class ShapesMain {
                             .ifPresent(TETRAHEDRON_REPOSITORY_SINGLETON::add);
                 }
             });
-
-            LOGGER.info(TETRAHEDRON_REPOSITORY_SINGLETON.getTetrahedrons());
-        } catch (CustomException e) {
+        } catch (ShapeException e) {
             e.printStackTrace();
         }
     }

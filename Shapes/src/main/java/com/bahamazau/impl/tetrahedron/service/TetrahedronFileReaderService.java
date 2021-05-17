@@ -1,6 +1,6 @@
 package com.bahamazau.impl.tetrahedron.service;
 
-import com.bahamazau.impl.tetrahedron.exception.CustomException;
+import com.bahamazau.api.exception.ShapeException;
 import com.bahamazau.api.ShapeFileReaderService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,7 +19,7 @@ public class TetrahedronFileReaderService implements ShapeFileReaderService {
     private final static Logger LOGGER = LogManager.getLogger();
 
     @Override
-    public List<String> readDataFromFile(String path) throws CustomException {
+    public List<String> readDataFromFile(String path) throws ShapeException {
         validateFilePath(path);
         File file = new File(path);
 
@@ -27,16 +27,17 @@ public class TetrahedronFileReaderService implements ShapeFileReaderService {
         try (Stream<String> linesStream = Files.lines(file.toPath())) {
             linesStream.forEach(dataFromFile::add);
         } catch (Exception e) {
-            throw new CustomException(FILE_NOT_FOUND_MSG, e);
+            LOGGER.error(FILE_NOT_FOUND_MSG);
+            throw new ShapeException(FILE_NOT_FOUND_MSG, e);
         }
 
         return dataFromFile;
     }
 
-    public void validateFilePath(String filePath) throws CustomException {
-        if(filePath == null || filePath.isEmpty()) {
+    public void validateFilePath(String filePath) throws ShapeException {
+        if (filePath == null || filePath.isEmpty()) {
             LOGGER.error(FILE_PATH_IS_EMPTY_MSG);
-            throw new CustomException(FILE_PATH_IS_EMPTY_MSG);
+            throw new ShapeException(FILE_PATH_IS_EMPTY_MSG);
         }
     }
 
