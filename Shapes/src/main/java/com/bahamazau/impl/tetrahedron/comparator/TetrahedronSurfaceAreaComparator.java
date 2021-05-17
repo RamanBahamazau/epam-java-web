@@ -1,7 +1,6 @@
-package com.bahamazau.impl.tetrahedron.comporator;
+package com.bahamazau.impl.tetrahedron.comparator;
 
 import com.bahamazau.api.ShapeService;
-import com.bahamazau.api.entity.Shape;
 import com.bahamazau.impl.tetrahedron.entity.Tetrahedron;
 import com.bahamazau.impl.tetrahedron.service.TetrahedronService;
 import org.apache.logging.log4j.LogManager;
@@ -24,23 +23,23 @@ public class TetrahedronSurfaceAreaComparator implements Comparator<Tetrahedron>
         OptionalDouble surfaceAreaOptional2 = calculateService.calculateSurfaceArea(tetrahedron2);
         double surfaceArea2 = surfaceAreaOptional2.isPresent() ? surfaceAreaOptional2.getAsDouble() : 0;
 
-        int resultOfСomparation = Double.compare(surfaceArea1, surfaceArea2);
+        int result = Double.compare(surfaceArea1, surfaceArea2);
 
-        logComparation(resultOfСomparation);
-        return resultOfСomparation;
+        log(result);
+        return result;
     }
 
-    private void logComparation(int resultOfСomparation) {
-        String textResultOfComparation = "";
-        if (resultOfСomparation == -1) {
-            textResultOfComparation = "greater then";
-        } else if (resultOfСomparation == 0) {
-            textResultOfComparation = "equal to";
-        } else if (resultOfСomparation == 1) {
-            textResultOfComparation = "less then";
+    private void log(int result) {
+        String textResult = "";
+        if (result == -1) {
+            textResult = "greater then";
+        } else if (result == 0) {
+            textResult = "equal to";
+        } else if (result == 1) {
+            textResult = "less then";
         }
 
-        LOGGER.info(String.join(" ", "First is", textResultOfComparation, "second."));
+        LOGGER.info(String.join(" ", "First is", textResult, "second."));
     }
 
 }

@@ -1,13 +1,15 @@
-package com.bahamazau.impl.tetrahedron.comporator;
+package com.bahamazau.impl.tetrahedron.comparator;
 
 import static org.junit.Assert.assertEquals;
 
 import com.bahamazau.impl.tetrahedron.entity.Tetrahedron;
 import org.junit.Test;
 
+import java.util.Comparator;
+
 public class TetrahedronIdComparatorTest {
 
-    private final TetrahedronIdComparator comparator = new TetrahedronIdComparator();
+    private final Comparator<Tetrahedron> comparator = new TetrahedronIdComparator();
 
     @Test
     public void shouldReturnMinusOne_whenCompare_givenFirstShapeWithIdLessThenSecond() {

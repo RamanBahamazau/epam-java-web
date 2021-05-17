@@ -5,7 +5,7 @@ import com.bahamazau.api.entity.Shape;
 import com.bahamazau.api.observer.ShapeObserver;
 import com.bahamazau.impl.tetrahedron.observer.TetrahedronEvent;
 import com.bahamazau.impl.tetrahedron.service.TetrahedronService;
-import com.bahamazau.impl.tetrahedron.warehouse.ShapeWarehouse;
+import com.bahamazau.impl.tetrahedron.warehouse.TetrahedronWarehouse;
 
 import java.util.OptionalDouble;
 
@@ -18,15 +18,16 @@ public class TetrahedronShapeObserver implements ShapeObserver<TetrahedronEvent>
         Shape tetrahedron = event.getSource();
 
         OptionalDouble surfaceAreaOptional = service.calculateSurfaceArea(tetrahedron);
-        double surfaceArea = surfaceAreaOptional.isPresent() ? surfaceAreaOptional.getAsDouble() : 0;
-
         OptionalDouble volumeOptional = service.calculateVolume(tetrahedron);
-        double volume = volumeOptional.isPresent() ? volumeOptional.getAsDouble() : 0;
-
         OptionalDouble perimeterOptional = service.calculatePerimeter(tetrahedron);
-        double perimeter = perimeterOptional.isPresent() ? perimeterOptional.getAsDouble() : 0;
 
-        ShapeWarehouse.getInstance().putParameter(tetrahedron.getId(), surfaceArea, volume, perimeter);
+        if (surfaceAreaOptional.isPresent() && volumeOptional.isPresent() && perimeterOptional.isPresent()) {
+            TetrahedronWarehouse.getInstance().putParameter(
+                    tetrahedron.getId(),
+                    surfaceAreaOptional.getAsDouble(),
+                    volumeOptional.getAsDouble(),
+                    perimeterOptional.getAsDouble());
+        }
     }
 
 }

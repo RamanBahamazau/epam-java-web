@@ -20,7 +20,7 @@ public class TetrahedronFactory {
             LOGGER.info("Tetrahedron[" + id + "] has been added added to repository");
             return Optional.of(tetrahedron);
         } else {
-            LOGGER.warn("The shape[" + id + "] is not a tetrahedron");
+            LOGGER.warn("The shape is not a tetrahedron");
         }
 
         return Optional.empty();

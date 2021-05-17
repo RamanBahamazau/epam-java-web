@@ -1,9 +1,66 @@
-2021-05-18 00:22:20,688 INFO c.b.i.t.c.TetrahedronIdComparator [main] 
-2021-05-18 00:22:20,710 INFO c.b.i.t.c.TetrahedronIdComparator [main] 
-2021-05-18 00:22:20,720 INFO c.b.i.t.c.TetrahedronIdComparator [main] 
-2021-05-18 00:24:16,699 INFO c.b.i.t.c.TetrahedronIdComparator [main] 
-2021-05-18 00:24:16,705 INFO c.b.i.t.c.TetrahedronIdComparator [main] 
-2021-05-18 00:24:16,706 INFO c.b.i.t.c.TetrahedronIdComparator [main] 
-2021-05-18 00:42:45,711 INFO c.b.i.t.c.TetrahedronIdComparator [main] First is equal to second.
-2021-05-18 00:42:45,719 INFO c.b.i.t.c.TetrahedronIdComparator [main] First is greater then second.
-2021-05-18 00:42:45,719 INFO c.b.i.t.c.TetrahedronIdComparator [main] First is less then second.
+2021-05-18 02:38:43,650 INFO c.b.i.t.c.TetrahedronIdComparator [main] First is equal to second.
+2021-05-18 02:38:43,655 INFO c.b.i.t.c.TetrahedronIdComparator [main] First is greater then second.
+2021-05-18 02:38:43,655 INFO c.b.i.t.c.TetrahedronIdComparator [main] First is less then second.
+2021-05-18 02:38:43,661 INFO c.b.i.t.s.TetrahedronService [main] Surface area of tetrahedron is equal to: 1.154742873778742
+2021-05-18 02:38:43,662 INFO c.b.i.t.s.TetrahedronService [main] Surface area of tetrahedron is equal to: 1.154742873778742
+2021-05-18 02:38:43,662 INFO c.b.i.t.c.TetrahedronSurfaceAreaComparator [main] First is equal to second.
+2021-05-18 02:38:43,663 INFO c.b.i.t.s.TetrahedronService [main] Surface area of tetrahedron is equal to: 1.154742873778742
+2021-05-18 02:38:43,663 INFO c.b.i.t.s.TetrahedronService [main] Surface area of tetrahedron is equal to: 8.485281374238568
+2021-05-18 02:38:43,663 INFO c.b.i.t.c.TetrahedronSurfaceAreaComparator [main] First is greater then second.
+2021-05-18 02:38:43,664 INFO c.b.i.t.s.TetrahedronService [main] Surface area of tetrahedron is equal to: 8.485281374238568
+2021-05-18 02:38:43,664 INFO c.b.i.t.s.TetrahedronService [main] Surface area of tetrahedron is equal to: 1.154742873778742
+2021-05-18 02:38:43,665 INFO c.b.i.t.c.TetrahedronSurfaceAreaComparator [main] First is less then second.
+2021-05-18 02:38:43,668 INFO c.b.i.t.s.TetrahedronService [main] Height of tetrahedron is equal to: 0.288
+2021-05-18 02:38:43,669 INFO c.b.i.t.s.TetrahedronService [main] Volume of tetrahedron is equal to: 0.04156799999999998
+2021-05-18 02:38:43,669 INFO c.b.i.t.s.TetrahedronService [main] Height of tetrahedron is equal to: 0.288
+2021-05-18 02:38:43,669 INFO c.b.i.t.s.TetrahedronService [main] Volume of tetrahedron is equal to: 0.04156799999999998
+2021-05-18 02:38:43,670 INFO c.b.i.t.c.TetrahedronVolumeComparator [main] First is equal to second.
+2021-05-18 02:38:43,670 INFO c.b.i.t.s.TetrahedronService [main] Height of tetrahedron is equal to: 0.288
+2021-05-18 02:38:43,671 INFO c.b.i.t.s.TetrahedronService [main] Volume of tetrahedron is equal to: 0.04156799999999998
+2021-05-18 02:38:43,671 INFO c.b.i.t.s.TetrahedronService [main] Height of tetrahedron is equal to: 2.0
+2021-05-18 02:38:43,671 INFO c.b.i.t.s.TetrahedronService [main] Volume of tetrahedron is equal to: 1.0000000000000013
+2021-05-18 02:38:43,672 INFO c.b.i.t.c.TetrahedronVolumeComparator [main] First is greater then second.
+2021-05-18 02:38:43,672 INFO c.b.i.t.s.TetrahedronService [main] Height of tetrahedron is equal to: 2.0
+2021-05-18 02:38:43,673 INFO c.b.i.t.s.TetrahedronService [main] Volume of tetrahedron is equal to: 1.0000000000000013
+2021-05-18 02:38:43,673 INFO c.b.i.t.s.TetrahedronService [main] Height of tetrahedron is equal to: 0.288
+2021-05-18 02:38:43,673 INFO c.b.i.t.s.TetrahedronService [main] Volume of tetrahedron is equal to: 0.04156799999999998
+2021-05-18 02:38:43,673 INFO c.b.i.t.c.TetrahedronVolumeComparator [main] First is less then second.
+2021-05-18 02:38:43,677 INFO c.b.i.t.c.TetrahedronIdComparator [main] First is equal to second.
+2021-05-18 02:38:43,678 INFO c.b.i.t.c.TetrahedronIdComparator [main] First is greater then second.
+2021-05-18 02:38:43,679 INFO c.b.i.t.c.TetrahedronIdComparator [main] First is less then second.
+2021-05-18 02:38:43,682 INFO c.b.i.t.s.TetrahedronService [main] Surface area of tetrahedron is equal to: 1.154742873778742
+2021-05-18 02:38:43,683 INFO c.b.i.t.s.TetrahedronService [main] Surface area of tetrahedron is equal to: 1.154742873778742
+2021-05-18 02:38:43,683 INFO c.b.i.t.c.TetrahedronSurfaceAreaComparator [main] First is equal to second.
+2021-05-18 02:38:43,684 INFO c.b.i.t.s.TetrahedronService [main] Surface area of tetrahedron is equal to: 1.154742873778742
+2021-05-18 02:38:43,684 INFO c.b.i.t.s.TetrahedronService [main] Surface area of tetrahedron is equal to: 8.485281374238568
+2021-05-18 02:38:43,684 INFO c.b.i.t.c.TetrahedronSurfaceAreaComparator [main] First is greater then second.
+2021-05-18 02:38:43,685 INFO c.b.i.t.s.TetrahedronService [main] Surface area of tetrahedron is equal to: 8.485281374238568
+2021-05-18 02:38:43,686 INFO c.b.i.t.s.TetrahedronService [main] Surface area of tetrahedron is equal to: 1.154742873778742
+2021-05-18 02:38:43,686 INFO c.b.i.t.c.TetrahedronSurfaceAreaComparator [main] First is less then second.
+2021-05-18 02:38:43,690 INFO c.b.i.t.s.TetrahedronService [main] Height of tetrahedron is equal to: 0.288
+2021-05-18 02:38:43,691 INFO c.b.i.t.s.TetrahedronService [main] Volume of tetrahedron is equal to: 0.04156799999999998
+2021-05-18 02:38:43,691 INFO c.b.i.t.s.TetrahedronService [main] Height of tetrahedron is equal to: 0.288
+2021-05-18 02:38:43,692 INFO c.b.i.t.s.TetrahedronService [main] Volume of tetrahedron is equal to: 0.04156799999999998
+2021-05-18 02:38:43,693 INFO c.b.i.t.c.TetrahedronVolumeComparator [main] First is equal to second.
+2021-05-18 02:38:43,695 INFO c.b.i.t.s.TetrahedronService [main] Height of tetrahedron is equal to: 0.288
+2021-05-18 02:38:43,695 INFO c.b.i.t.s.TetrahedronService [main] Volume of tetrahedron is equal to: 0.04156799999999998
+2021-05-18 02:38:43,696 INFO c.b.i.t.s.TetrahedronService [main] Height of tetrahedron is equal to: 2.0
+2021-05-18 02:38:43,696 INFO c.b.i.t.s.TetrahedronService [main] Volume of tetrahedron is equal to: 1.0000000000000013
+2021-05-18 02:38:43,696 INFO c.b.i.t.c.TetrahedronVolumeComparator [main] First is greater then second.
+2021-05-18 02:38:43,697 INFO c.b.i.t.s.TetrahedronService [main] Height of tetrahedron is equal to: 2.0
+2021-05-18 02:38:43,697 INFO c.b.i.t.s.TetrahedronService [main] Volume of tetrahedron is equal to: 1.0000000000000013
+2021-05-18 02:38:43,698 INFO c.b.i.t.s.TetrahedronService [main] Height of tetrahedron is equal to: 0.288
+2021-05-18 02:38:43,698 INFO c.b.i.t.s.TetrahedronService [main] Volume of tetrahedron is equal to: 0.04156799999999998
+2021-05-18 02:38:43,698 INFO c.b.i.t.c.TetrahedronVolumeComparator [main] First is less then second.
+2021-05-18 02:38:43,704 WARN c.b.i.t.s.p.TetrahedronPointsParserValidator [main] The string 0.5 0.288 0.816 0 0 0 1 0 0 0.5 0.866 has not enough parameters 11
+2021-05-18 02:38:43,705 INFO c.b.i.t.s.p.TetrahedronPointsParser [main] Text line has been parsed to dot list.
+2021-05-18 02:38:43,707 INFO c.b.a.e.d.DotFactory [main] Dot has created: x = 0.5; y = 0.288; z = 0.816;
+2021-05-18 02:38:43,707 INFO c.b.a.e.d.DotFactory [main] Dot has created: x = 0.0; y = 0.0; z = 0.0;
+2021-05-18 02:38:43,708 INFO c.b.a.e.d.DotFactory [main] Dot has created: x = 1.0; y = 0.0; z = 0.0;
+2021-05-18 02:38:43,708 INFO c.b.a.e.d.DotFactory [main] Dot has created: x = 0.5; y = 0.866; z = 0.0;
+2021-05-18 02:38:43,708 INFO c.b.i.t.s.p.TetrahedronPointsParser [main] Text line has been parsed to dot list.
+2021-05-18 02:38:43,710 WARN c.b.i.t.s.p.TetrahedronPointsParserValidator [main] The string 0.5 0.288 0.816 0 0 0 1 0 0 0.5 0.866 has not enough parameters 11
+2021-05-18 02:38:43,713 WARN c.b.i.t.s.p.TetrahedronPointsParserValidator [main] The string 0.5 text 0.816 0 0 0 1 0 0 0.5 0.866 0 contain an invalid parameter!
+2021-05-18 02:38:43,719 ERROR c.b.i.t.s.TetrahedronFileReaderService [main] File path is empty
+2021-05-18 02:38:43,720 ERROR c.b.i.t.s.TetrahedronFileReaderService [main] File path is empty
+2021-05-18 02:38:43,727 ERROR c.b.i.t.s.TetrahedronFileReaderService [main] File is not found

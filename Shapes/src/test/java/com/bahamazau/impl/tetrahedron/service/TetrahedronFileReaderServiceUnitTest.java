@@ -29,7 +29,9 @@ public class TetrahedronFileReaderServiceUnitTest {
                 "-4 2 7  2 -3 0  -10 5 8  -5 2 -4",
                 "0 -1 2  -1 -1 6 -2 0 2 0 1 4",
                 "2 2 2 0 0 0 0 0 0 2 1 0",
-                "1 2 3"};
+                "1 2 3",
+                "0.5 0.288 0.916 0 0 0.1 1 0 0.1 0.5 0.866 0.1"
+        };
         List<String> expected = Arrays.asList(list);
         // when
         List<String> actual = dataReader.readDataFromFile(filePath);
