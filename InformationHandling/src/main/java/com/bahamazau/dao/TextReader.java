@@ -10,12 +10,14 @@ public class TextReader {
 
     public Optional<String> readText(String filePath) throws IOException {
         URL url = getClass().getClassLoader().getResource(filePath);
+
+        String content = null;
         if (url != null) {
             File file = new File(url.getFile());
-            return Optional.ofNullable(new String(Files.readAllBytes(file.toPath())));
+            content = new String(Files.readAllBytes(file.toPath()));
         }
 
-        return Optional.empty();
+        return Optional.ofNullable(content);
     }
 
 }
