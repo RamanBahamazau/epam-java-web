@@ -8,8 +8,4 @@ public class ExpressionParser extends TextParser {
         super(EXPRESSION, "", nextParsers);
     }
 
-    @Override
-    protected void parse(String text) {
-
-    }
 }

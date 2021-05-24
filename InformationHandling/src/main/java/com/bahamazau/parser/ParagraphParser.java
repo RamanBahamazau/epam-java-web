@@ -8,9 +8,5 @@ public class ParagraphParser extends TextParser {
         super(PARAGRAPH, "(?m)(?=^\\s{4})", nextParser);
     }
 
-    @Override
-    public void parse(String text) {
-
-    }
 
 }

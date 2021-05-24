@@ -8,10 +8,8 @@ public class TextParserBuilder {
 
     private TextParserBuilder instance;
 
-    private WordParser wordParser = new WordParser();
     private ExpressionParser expressionParser = new ExpressionParser();
-    private TokenParser tokenParser = new TokenParser(expressionParser, wordParser);
-    private SentenceParser sentenceParser = new SentenceParser(tokenParser);
+    private SentenceParser sentenceParser = new SentenceParser(expressionParser);
 
     public TextParserBuilder getInstance() {
         if (instance == null) {
@@ -21,18 +19,8 @@ public class TextParserBuilder {
         return this.instance;
     }
 
-    public TextParserBuilder withWordParser(WordParser wordParser) {
-        this.wordParser = wordParser;
-        return this;
-    }
-
     public TextParserBuilder withExpressionParser(ExpressionParser expressionParser) {
         this.expressionParser = expressionParser;
-        return this;
-    }
-
-    public TextParserBuilder withTokenParser(TokenParser tokenParser) {
-        this.tokenParser = tokenParser;
         return this;
     }
 

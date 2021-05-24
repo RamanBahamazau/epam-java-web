@@ -4,18 +4,8 @@ import static com.bahamazau.composite.TextType.*;
 
 public class SentenceParser extends TextParser {
 
-    public SentenceParser(TokenParser... nextParsers) {
-        super(TOKEN, "\\.\\s(?!\\d)|(?<!\\d)\\.\\s", nextParsers);
-    }
-
-    /**
-     * Parse on expressions and words.
-     *
-     * @param text
-     */
-    @Override
-    public void parse(String text) {
-
+    public SentenceParser(TextParser... nextParsers) {
+        super(SENTENCE, "\\.\\s(?!\\d)|(?<!\\d)\\.\\s", nextParsers);
     }
 
 }
