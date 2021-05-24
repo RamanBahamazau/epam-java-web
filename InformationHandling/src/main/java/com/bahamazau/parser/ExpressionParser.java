@@ -5,7 +5,7 @@ import static com.bahamazau.composite.TextType.*;
 public class ExpressionParser extends TextParser {
 
     public ExpressionParser(TextParser... nextParsers) {
-        super(EXPRESSION, "", nextParsers);
+        super(EXPRESSION, "\\s", nextParsers);
     }
 
 }
