@@ -22,11 +22,13 @@ public abstract class TextParser {
         this.nextParsers = nextParsers;
     }
 
+    // TODO: split method on different parsers, especially WordParser
     public List<TextElementMother> parse(String text) {
         String[] textElementValues = text.split(regex);
 
         List<TextElementMother> textElementList = new ArrayList<>();
         if (nextParsers.length == 0) {
+            // WordParser logic
             List<TextElementMother> symbolTextElementList = new ArrayList<>();
 
                 Arrays.stream(textElementValues).forEach(textElementValue -> {
@@ -41,6 +43,7 @@ public abstract class TextParser {
                     textElementList.add(textElement);
                 }
         } else {
+            // Common logic
             Arrays.stream(nextParsers).forEach(nextParser -> {
                 List<TextElementMother> childTextElementList = parse(textElementValues, nextParser);
                 textElementList.addAll(childTextElementList);
