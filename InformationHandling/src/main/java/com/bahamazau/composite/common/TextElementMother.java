@@ -10,4 +10,8 @@ public abstract class TextElementMother {
         this.textType = textType;
     }
 
+    public TextType getTextType() {
+        return textType;
+    }
+
 }

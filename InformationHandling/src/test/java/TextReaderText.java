@@ -32,6 +32,10 @@ public class TextReaderText {
         Optional<String> actual = textReader.readText("textExample.txt");
         // then
         assertEquals(expected, actual);
+
+        actual.ifPresent(act -> {
+            TextElementMother list = new TextParserBuilder().build().parse(act);
+        });
     }
 
 }

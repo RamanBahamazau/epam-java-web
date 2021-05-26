@@ -4,10 +4,11 @@ import com.bahamazau.composite.common.TextCompositeListener;
 import com.bahamazau.composite.common.TextElementMother;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
-public class TextElement extends TextElementMother implements TextCompositeListener {
+public class TextElement extends TextElementMother implements TextCompositeListener, Comparable<TextElement> {
 
     private List<TextElementMother> textElements = new ArrayList<>();
 
@@ -48,4 +49,10 @@ public class TextElement extends TextElementMother implements TextCompositeListe
     public List<TextElementMother> getTextElements() {
         return textElements;
     }
+
+    @Override
+    public int compareTo(TextElement o) {
+        return Integer.valueOf(textElements.size()).compareTo(Integer.valueOf(o.textElements.size()));
+    }
+
 }

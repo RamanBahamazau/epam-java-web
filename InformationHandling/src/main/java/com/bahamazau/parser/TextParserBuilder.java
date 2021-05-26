@@ -6,28 +6,18 @@ package com.bahamazau.parser;
  */
 public class TextParserBuilder {
 
-    private TextParserBuilder instance;
-
     private WordParser wordParser = new WordParser();
-    private ExpressionParser expressionParser = new ExpressionParser(wordParser);
-    private SentenceParser sentenceParser = new SentenceParser(expressionParser);
+    private TokenParser tokenParser = new TokenParser(wordParser);
+    private SentenceParser sentenceParser = new SentenceParser(tokenParser);
     private ParagraphParser paragraphParser = new ParagraphParser(sentenceParser);
-
-    public TextParserBuilder getInstance() {
-        if (instance == null) {
-            instance = new TextParserBuilder();
-        }
-
-        return this.instance;
-    }
 
     public TextParserBuilder withWordParser(WordParser wordParser) {
         this.wordParser = wordParser;
         return this;
     }
 
-    public TextParserBuilder withExpressionParser(ExpressionParser expressionParser) {
-        this.expressionParser = expressionParser;
+    public TextParserBuilder withExpressionParser(TokenParser tokenParser) {
+        this.tokenParser = tokenParser;
         return this;
     }
 

@@ -5,7 +5,7 @@ public enum TextType {
     TEXT,
     PARAGRAPH,
     SENTENCE,
-    EXPRESSION,
+    TOKEN,
     WORD,
     SYMBOL;
 
