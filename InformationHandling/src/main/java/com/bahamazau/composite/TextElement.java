@@ -45,4 +45,7 @@ public class TextElement extends TextElementMother implements TextCompositeListe
         textElements.remove(textElement);
     }
 
+    public List<TextElementMother> getTextElements() {
+        return textElements;
+    }
 }

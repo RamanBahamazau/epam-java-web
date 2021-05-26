@@ -10,7 +10,8 @@ public class TextParserBuilder {
 
     private WordParser wordParser = new WordParser();
     private ExpressionParser expressionParser = new ExpressionParser(wordParser);
-    private SentenceParser sentenceParser = new SentenceParser(expressionParser, wordParser);
+    private SentenceParser sentenceParser = new SentenceParser(expressionParser);
+    private ParagraphParser paragraphParser = new ParagraphParser(sentenceParser);
 
     public TextParserBuilder getInstance() {
         if (instance == null) {
@@ -35,8 +36,13 @@ public class TextParserBuilder {
         return this;
     }
 
-    public TextParser build() {
-        return new ParagraphParser(sentenceParser);
+    public TextParserBuilder withParagraphParser(ParagraphParser paragraphParser) {
+        this.paragraphParser = paragraphParser;
+        return this;
+    }
+
+    public TextParserMother build() {
+        return new TextParser(paragraphParser);
     }
 
 }
